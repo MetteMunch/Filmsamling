@@ -16,6 +16,9 @@ public class Main {
         System.out.println("Angiv director på filmen:");
         String director = input.nextLine();
 
+        System.out.println("Angiv genre på filmen, vælg mellem action, komedie, gyser, romantik, krimi eller sci-fi:");
+        String genre = input.nextLine();
+
         System.out.println("Hvilket år havde den premiere");
         int yearCreated = input.nextInt();
 
@@ -23,13 +26,9 @@ public class Main {
         boolean isInColor = input.nextBoolean();
 
         System.out.println("Hvor mange minutter varer filmen?");
-        int  = input.nextInt();
+        int lengthInMinutes  = input.nextInt();
 
-
-        samling1.addMovie("Burn after reading","Coen",1992,true,120,"Comedy");
-
-        //tilføj film via scanner
-
+        samling1.addMovie(title,director,yearCreated,isInColor, lengthInMinutes,genre);
 
     }
 }
