@@ -10,10 +10,11 @@ public class MovieCollection {
     }
 
 
-    //metoder bl.a. addMovie..
+    //metoder
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        movieListe[count++] = new Movie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
-        System.out.println("Du har tilføjet filmen: " +title);
+        movieListe[count++] = new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+        System.out.println("Du har tilføjet filmen: " + title);
+        System.out.println("Filmsamlingen indeholder nu samlet: " +count + " film.");
     }
 
     public Movie[] getMovieListe() {
