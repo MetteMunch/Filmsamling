@@ -6,7 +6,7 @@ public class Controller {
     //constructor
     public Controller() {
     }
-    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre){
+    public void addMovie1(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre){
         instanceMovieCollection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
     }
 

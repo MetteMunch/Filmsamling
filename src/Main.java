@@ -35,7 +35,7 @@ public class Main {
                 System.out.println("Hvor mange minutter varer filmen?");
                 int lengthInMinutes = input.nextInt();
 
-                samling1.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+                samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
 
             } else if (inputKey == 2) {
                 System.out.println("Tak for denne gang");
