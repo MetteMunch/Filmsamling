@@ -2,7 +2,7 @@ public class MovieCollection {
 
 
     //eventuelle attributes
-    private Movie[] movieListe = new Movie[5];
+    private Movie[] movieListe = new Movie[5];//ArrayList <Movie> movieListe = new ArrayList<Movie>;
     int count = 0; //tæller til at løbe igennem poster og tilføje, når der tilføjes ny film
 
     //constructor

@@ -9,7 +9,7 @@ public class Movie {
 
     //attributes på movie
 
-    //constructor
+    //constructor med setter af attributes
     public Movie (String title, String director,int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         this.title = title;
         this.director = director;
