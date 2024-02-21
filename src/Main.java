@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //create instance of MovieCollection
-        MovieCollection samling1 = new MovieCollection();
+        //create instance of Controller class
+        Controller samling1 = new Controller();
 
         Scanner input = new Scanner(System.in);
 
