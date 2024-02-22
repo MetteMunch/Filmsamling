@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MovieCollection {
 
-    private ArrayList<Movie> movieListe = new ArrayList<>();
+    ArrayList<Movie> movieListe = new ArrayList<>();
 
 
     //constructor
@@ -17,11 +17,25 @@ public class MovieCollection {
         System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
     }
 
+    public void printFullListe() {
+        for (Movie film : movieListe) {
+            System.out.println(film.toString());
+        }
+    }
+
+    public void searchMovie(String title) {
+        for (Movie films : getMovieListe()) {
+            if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                System.out.println("Ja vi har den ønskede film");
+            }
+            System.out.println("Nej desværre har vi ikke den film");
+        }
+    }
+
+
     public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" Movie
         return movieListe;
     }
-    /*loop igennem med for each og kald movie.toString
-        }*/
 
 
 }
