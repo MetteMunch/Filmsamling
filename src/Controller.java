@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Controller {
 
     //oprettelse af instance af MovieCollection
@@ -14,4 +16,7 @@ public class Controller {
         return instanceMovieCollection;//getter til instanceMovieCollection og typen er MovieCollection
     }
 
+    public ArrayList<Movie> findAllMovies ()    {
+        return instanceMovieCollection.getMovieListe();
+    }
 }

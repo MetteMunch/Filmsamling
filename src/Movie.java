@@ -20,23 +20,25 @@ public class Movie {
     }
 
 
-    // lav en metode toString @Override en slags stavekontrol  kaldes ved (Movies.toString)
-    /*public String toString(){   bygger en string der sendes tilbage
-    result += title + " " +genre;
-    if(erifarve) {
-    result = "";
-    return result;
-}   dette result sendes til en anden metode, der laver udskriften*/
+    @Override //en slags stavekontrol  kaldes ved (Movies.toString)
+    public String toString() {
+        String result = " ";
+        result += "Filmtitel: " + title + " , Instruktør: " + director + " , Genre: " + genre;
+        return result;
+        /*if(erifarve) {
+    result = "";*/
 
-    public String getTitle(){
+    }   //dette result sendes til en anden metode, der laver udskriften
+
+    public String getTitle() {
         return title;
     }
 
-    public String gerDirector(){
+    public String gerDirector() {
         return director;
     }
 
-    public int getYearCreated (){
+    public int getYearCreated() {
         return yearCreated;
     }
 
@@ -44,18 +46,13 @@ public class Movie {
         return isInColor;
     }
 
-    public int getLengthInMinutes(){
+    public int getLengthInMinutes() {
         return lengthInMinutes;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
-
-
-
-
-
 
 
 }

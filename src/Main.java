@@ -1,3 +1,4 @@
+import javax.sound.midi.Soundbank;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -10,17 +11,37 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        int SENTINEL = 2;
+        int SENTINEL = 4;
         int inputKey = 0;
 
-        System.out.println("Velkommen til min filmsamling. Tryk 1, hvis du vil oprette en film. Tryk 2, hvis du vil afslutte.");
+        //Her opretter jeg lige nogle film i MovieCollection
+        /*samling1.addMovie1("Burn After Reading","Coen",2008,true,120,"Komedie");
+        samling1.addMovie1("titel2","Coen",2008,true,120,"Komedie");
+        samling1.addMovie1("titel3","Coen",2008,true,120,"Komedie");*/
+
+        System.out.println("Velkommen til min filmsamling\n" +
+                "Tryk 1, hvis du vil oprette en film\n" +
+                "Tryk 2, hvis du vil søge på en filmtitel\n" +
+                "Tryk 3 hvis du vil se en fuld liste\n" +
+                "tryk 4 hvis du vil afslutte");
         inputKey = input.nextInt();
 
         while (inputKey != SENTINEL) {  //ændre til at bruge SENTINEL og ikke break. variabel menuChoice
 
             input.nextLine();//nødvendig for at kunne indsætte titel (scanner bug)
 
-            if (inputKey == 1) {
+            if (inputKey == 3) {//i denne printer den en liste med samtlige film
+                for(Movie film : samling1.findAllMovies()){
+                    System.out.println(film.toString());
+                }
+
+            } else if (inputKey == 2) {
+                //kode der skal fremfinde én titel
+                /*for(Movie film : samling1.findAllMovies()){
+                    if()//kode der skal fremfinde én titel
+                }*/
+            }
+            else if (inputKey == 1) {
                 System.out.println("Angiv titel på filmen, som du vil tilføje:");
                 String title = input.nextLine();// skal bruge nextLine når der kan være flere ord ellers er next ok
 
@@ -41,15 +62,21 @@ public class Main {
 
                 samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
 
-
             }
-            System.out.println("Vil du tilføje en film mere så tryk 1 og ellers tryk 2.");
+            System.out.println("Vil du tilføje en film mere så tryk 1\n" +
+                    "Vil du søge på en filmtitel så tryk 2\n" +
+                    "Vil du se en fuld liste så tryk 3\n" +
+                    "Vil du slutte programmet så tryk 4");
             inputKey = input.nextInt();
 
 
         }
         System.out.println("Tak for denne gang");
-        //System.out.println(samling1.getInstanceMovieCollection().getMovieListe().contains());
+
+
+
+
+
         //System.out.println(samling1.getInstanceMovieCollection().getMovieListe().toString()); //denne metode får kun udprintet referencer og ikke eksakt indhold
     }
 
