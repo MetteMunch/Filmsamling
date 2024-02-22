@@ -20,10 +20,15 @@ public class Movie {
     }
 
 
-    @Override //en slags stavekontrol  kaldes ved (Movies.toString)
+    @Override //en slags stavekontrol  kaldes ved at kalde metoden Movies.toString()
     public String toString() {
         String result = " ";
         result += "Filmtitel: " + title + " , Instruktør: " + director + " , Genre: " + genre;
+        if(isInColor){
+            result += " Filmen er i farver";
+        } else {
+            result += " Filmen er i sort/hvid";
+        }
         return result;
         /*if(erifarve) {
     result = "";*/

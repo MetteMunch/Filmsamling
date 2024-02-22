@@ -54,7 +54,7 @@ public class Main {
                 System.out.println("Hvilket år havde den premiere");
                 int yearCreated = input.nextInt();
 
-                System.out.println("Skriv true, hvis filmen er i farver:");//tilføj ja eller nej med if sætning
+                System.out.println("Skriv true, hvis filmen er i farver og false, hvis den s/h:");
                 boolean isInColor = input.nextBoolean();
 
                 System.out.println("Hvor mange minutter varer filmen?");
@@ -73,11 +73,6 @@ public class Main {
         }
         System.out.println("Tak for denne gang");
 
-
-
-
-
-        //System.out.println(samling1.getInstanceMovieCollection().getMovieListe().toString()); //denne metode får kun udprintet referencer og ikke eksakt indhold
     }
 
 }
