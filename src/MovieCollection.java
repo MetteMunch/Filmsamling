@@ -17,4 +17,11 @@ public class MovieCollection {
         System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
     }
 
+    public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" Movie
+        return movieListe;
+    }
+    /*loop igennem med for each og kald movie.toString
+        }*/
+
+
 }

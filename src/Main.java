@@ -10,10 +10,14 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
+        int SENTINEL = 2;
+        int inputKey = 0;
 
-        while (true) {
-            System.out.println("Velkommen til min filmsamling. Tryk 1, hvis du vil oprette en film. Tryk 2, hvis du vil afslutte.");
-            int inputKey = input.nextInt();
+        System.out.println("Velkommen til min filmsamling. Tryk 1, hvis du vil oprette en film. Tryk 2, hvis du vil afslutte.");
+        inputKey = input.nextInt();
+
+        while (inputKey != SENTINEL) {  //ændre til at bruge SENTINEL og ikke break. variabel menuChoice
+
             input.nextLine();//nødvendig for at kunne indsætte titel (scanner bug)
 
             if (inputKey == 1) {
@@ -29,7 +33,7 @@ public class Main {
                 System.out.println("Hvilket år havde den premiere");
                 int yearCreated = input.nextInt();
 
-                System.out.println("Skriv true, hvis filmen er i farver:");
+                System.out.println("Skriv true, hvis filmen er i farver:");//tilføj ja eller nej med if sætning
                 boolean isInColor = input.nextBoolean();
 
                 System.out.println("Hvor mange minutter varer filmen?");
@@ -37,10 +41,16 @@ public class Main {
 
                 samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
 
-            } else if (inputKey == 2) {
-                System.out.println("Tak for denne gang");
-                break;
+
             }
+            System.out.println("Vil du tilføje en film mere så tryk 1 og ellers tryk 2.");
+            inputKey = input.nextInt();
+
+
         }
+        System.out.println("Tak for denne gang");
+        //System.out.println(samling1.getInstanceMovieCollection().getMovieListe().contains());
+        //System.out.println(samling1.getInstanceMovieCollection().getMovieListe().toString()); //denne metode får kun udprintet referencer og ikke eksakt indhold
     }
+
 }

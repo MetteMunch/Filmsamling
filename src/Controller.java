@@ -10,4 +10,8 @@ public class Controller {
         instanceMovieCollection.addMovie(title,director,yearCreated,isInColor,lengthInMinutes,genre);
     }
 
+    public MovieCollection getInstanceMovieCollection(){
+        return instanceMovieCollection;//getter til instanceMovieCollection og typen er MovieCollection
+    }
+
 }
