@@ -21,7 +21,7 @@ public class Controller {
         instanceMovieCollection.printFullListe();
     }
 
-    public void findTitle(String title){
-        instanceMovieCollection.searchMovie(title);
+    public ArrayList<Movie> findTitle(String title){
+       return instanceMovieCollection.searchMovie(title);
     }
 }

@@ -15,9 +15,9 @@ public class Main {
         int inputKey = 0;
 
         //Her opretter jeg lige nogle film i MovieCollection
-        samling1.addMovie1("Burn After Reading","Coen",2008,true,120,"Komedie");
-        samling1.addMovie1("titel2","Coen",2008,true,120,"Komedie");
-        samling1.addMovie1("titel3","Coen",2008,true,120,"Komedie");
+        samling1.addMovie1("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
+        samling1.addMovie1("Godfather", "Coppola", 1972, true, 175, "Thriller");
+        samling1.addMovie1("La vita e bella", "Benigni", 1997, true, 120, "Drama");
 
         System.out.println("Velkommen til min filmsamling\n" +
                 "Tryk 1, hvis du vil oprette en film\n" +
@@ -34,10 +34,18 @@ public class Main {
                 samling1.findAllMovies();
 
 
-        } else if (inputKey == 2) {
-                System.out.println("Hvilken film søger du?"); //koden kan køre, men virker ikke...hvorfor?
+            } else if (inputKey == 2) {
+                System.out.println("Hvilken film søger du?"); //koden kan køre, men jeg skal have print flyttet til her..
                 String inputTitle = input.nextLine();
-                samling1.findTitle(inputTitle);
+                for (Movie movie : samling1.findTitle(inputTitle)) {
+                    if(!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()){
+                        System.out.println("Ja vi har filmen i samlingen: ");
+                        System.out.print(movie);
+                    } else {
+                        System.out.println("Desværre vi har ikke filmen");
+                    }
+                }
+
 
 
         } else if (inputKey == 1) {
@@ -47,7 +55,7 @@ public class Main {
             System.out.println("Angiv director på filmen:");
             String director = input.nextLine();
 
-            System.out.println("Angiv genre på filmen, vælg mellem action, komedie, gyser, romantik, krimi eller sci-fi:");
+            System.out.println("Angiv genre på filmen, vælg mellem action, thriller, drama, komedie, gyser, romantik, krimi eller sci-fi:");
             String genre = input.nextLine();
 
             System.out.println("Hvilket år havde den premiere");

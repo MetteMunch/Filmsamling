@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class MovieCollection {
 
     ArrayList<Movie> movieListe = new ArrayList<>();
+    ArrayList<Movie> searchMatch = new ArrayList<>();
 
 
     //constructor
@@ -23,13 +24,23 @@ public class MovieCollection {
         }
     }
 
-    public void searchMovie(String title) {
-        for (Movie films : getMovieListe()) {
-            if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                System.out.println("Ja vi har den ønskede film");
+    /*public String searchMovie(String title){ //user case 5
+
+        for(Movie films : movieListe){
+            if(films.getTitle().toLowerCase().contains(title.toLowerCase())){
+                return "Ja vi har filmen: " +films.toString();
             }
-            System.out.println("Nej desværre har vi ikke den film");
         }
+
+        return "Desværre vi har ikke filmen i samlingen.";
+    }*/
+
+    public ArrayList<Movie> searchMovie(String title) { //user case 6 jeg prøver at ændre denne til ren toString og ikke array senere
+        for (Movie films : movieListe) {
+            if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                searchMatch.add(films);
+            }
+        }return  searchMatch;
     }
 
 
@@ -37,5 +48,7 @@ public class MovieCollection {
         return movieListe;
     }
 
-
+    public ArrayList<Movie> getSearchMatch() {//getter for at kunne kalde searchMatch af typen Movie.
+        return searchMatch;
+    }
 }
