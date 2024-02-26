@@ -30,9 +30,6 @@ public class Movie {
             result += " , Filmen er i sort/hvid";
         }
         return result;
-        /*if(erifarve) {
-    result = "";*/
-
     }   //dette result sendes til en anden metode, der laver udskriften
 
     public String getTitle() {

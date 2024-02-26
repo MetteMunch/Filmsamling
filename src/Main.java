@@ -35,7 +35,7 @@ public class Main {
 
 
             } else if (inputKey == 2) {
-                System.out.println("Hvilken film søger du?"); //koden kan køre, men jeg skal have print flyttet til her..
+                System.out.println("Hvilken film søger du?");
                 String inputTitle = input.nextLine();
                 for (Movie movie : samling1.findTitle(inputTitle)) {
                     if(!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()){
