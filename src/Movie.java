@@ -24,7 +24,7 @@ public class Movie {
     public String toString() {
         String result = " ";
         result += "Filmtitel: " + title + " , Instruktør: " + director + " , Genre: " + genre + " , Filmlængde i min.:" + lengthInMinutes;
-        if(isInColor){
+        if (isInColor) {
             result += " , Filmen er i farver";
         } else {
             result += " , Filmen er i sort/hvid";
@@ -32,27 +32,27 @@ public class Movie {
         return result;
     }   //dette result vises som udskrift, når metoden kaldes
 
-    public void setTitle(String newTitle){
+    public void setTitle(String newTitle) {
         this.title = newTitle;
     }
 
-    public void setDirector(String newDirector){
+    public void setDirector(String newDirector) {
         this.director = newDirector;
     }
 
-    public void setGenre(String newGenre){
+    public void setGenre(String newGenre) {
         this.genre = newGenre;
     }
 
-    public void setYearCreated (int newYearCreated){
+    public void setYearCreated(int newYearCreated) {
         this.yearCreated = newYearCreated;
     }
 
-    public void setIsInColor(boolean newIsInColor){
+    public void setIsInColor(boolean newIsInColor) {
         this.isInColor = newIsInColor;
     }
 
-    public void setLengthInMinutes(int newLengthInMinutes){
+    public void setLengthInMinutes(int newLengthInMinutes) {
         this.lengthInMinutes = newLengthInMinutes;
     }
 

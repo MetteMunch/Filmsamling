@@ -21,11 +21,11 @@ public class Controller {
         instanceMovieCollection.printFullListe();
     }
 
-    public ArrayList<Movie> findTitle(String title){
-       return instanceMovieCollection.searchMovie(title);
+    public ArrayList<Movie> findTitle(String title) {
+        return instanceMovieCollection.searchMovie(title);
     }
 
-    public String findTitleMedToString(String title){ //til user case 5
+    public String findTitleMedToString(String title) { //til user case 5
         return instanceMovieCollection.searchMovieMedToString(title);
     }
 }

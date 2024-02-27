@@ -32,7 +32,7 @@ public class UserInterface {
             } else if (inputKey == 1) {
                 opretFilm();
 
-            } else if (inputKey == 3){
+            } else if (inputKey == 3) {
                 redigerFilm();
             }
             gentagMenu();
@@ -89,7 +89,7 @@ public class UserInterface {
         System.out.println(samling1.findTitleMedToString(inputTitle));
     }
 
-    public void redigerFilm(){
+    public void redigerFilm() {
         //her kommer kode
     }
 
