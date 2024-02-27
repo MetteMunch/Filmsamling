@@ -19,7 +19,9 @@ public class MovieCollection {
         System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
     }
 
-    /*public void editMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    /*public void editMovie() {
+        System.out.println("
+
         movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
         System.out.println("Du har ændret informationer på filmen: " + title);
         System.out.println("");

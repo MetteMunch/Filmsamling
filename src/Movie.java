@@ -30,7 +30,31 @@ public class Movie {
             result += " , Filmen er i sort/hvid";
         }
         return result;
-    }   //dette result sendes til en anden metode, der laver udskriften
+    }   //dette result vises som udskrift, når metoden kaldes
+
+    public void setTitle(String newTitle){
+        this.title = newTitle;
+    }
+
+    public void setDirector(String newDirector){
+        this.director = newDirector;
+    }
+
+    public void setGenre(String newGenre){
+        this.genre = newGenre;
+    }
+
+    public void setYearCreated (int newYearCreated){
+        this.yearCreated = newYearCreated;
+    }
+
+    public void setIsInColor(boolean newIsInColor){
+        this.isInColor = newIsInColor;
+    }
+
+    public void setLengthInMinutes(int newLengthInMinutes){
+        this.lengthInMinutes = newLengthInMinutes;
+    }
 
     public String getTitle() {
         return title;
