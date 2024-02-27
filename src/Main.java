@@ -38,48 +38,50 @@ public class Main {
                 System.out.println("Hvilken film søger du?");
                 String inputTitle = input.nextLine();
                 for (Movie movie : samling1.findTitle(inputTitle)) {
-                    if(!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()){
-                        System.out.println("Ja vi har filmen i samlingen: ");
+                    if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+                        System.out.println(" Ja vi har filmen i samlingen: ");
                         System.out.print(movie);
                     } else {
                         System.out.println("Desværre vi har ikke filmen");
                     }
+                }/* else if (inputKey == 2) { //user case 5, hvis der skal søges og udskrives med toString
+                        System.out.println("Skriv lidt af titlen på filmen, som du søger");
+                        String inputTitle = input.nextLine();
+                        System.out.println(samling1.findTitleMedToString(inputTitle));*/
+
+
+                } else if (inputKey == 1) {
+                    System.out.println("Angiv titel på filmen, som du vil tilføje:");
+                    String title = input.nextLine();// skal bruge nextLine når der kan være flere ord ellers er next ok
+
+                    System.out.println("Angiv director på filmen:");
+                    String director = input.nextLine();
+
+                    System.out.println("Angiv genre på filmen, vælg mellem action, thriller, drama, komedie, gyser, romantik, krimi eller sci-fi:");
+                    String genre = input.nextLine();
+
+                    System.out.println("Hvilket år havde den premiere");
+                    int yearCreated = input.nextInt();
+
+                    System.out.println("Skriv true, hvis filmen er i farver og false, hvis den s/h:");
+                    boolean isInColor = input.nextBoolean();
+
+                    System.out.println("Hvor mange minutter varer filmen?");
+                    int lengthInMinutes = input.nextInt();
+
+                    samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+
                 }
+                System.out.println("Vil du tilføje en film mere så tryk 1\n" +
+                        "Vil du søge på en filmtitel så tryk 2\n" +
+                        "Vil du se en fuld liste så tryk 3\n" +
+                        "Vil du slutte programmet så tryk 4");
+                inputKey = input.nextInt();
 
 
-
-        } else if (inputKey == 1) {
-            System.out.println("Angiv titel på filmen, som du vil tilføje:");
-            String title = input.nextLine();// skal bruge nextLine når der kan være flere ord ellers er next ok
-
-            System.out.println("Angiv director på filmen:");
-            String director = input.nextLine();
-
-            System.out.println("Angiv genre på filmen, vælg mellem action, thriller, drama, komedie, gyser, romantik, krimi eller sci-fi:");
-            String genre = input.nextLine();
-
-            System.out.println("Hvilket år havde den premiere");
-            int yearCreated = input.nextInt();
-
-            System.out.println("Skriv true, hvis filmen er i farver og false, hvis den s/h:");
-            boolean isInColor = input.nextBoolean();
-
-            System.out.println("Hvor mange minutter varer filmen?");
-            int lengthInMinutes = input.nextInt();
-
-            samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            }
+            System.out.println("Tak for denne gang");
 
         }
-        System.out.println("Vil du tilføje en film mere så tryk 1\n" +
-                "Vil du søge på en filmtitel så tryk 2\n" +
-                "Vil du se en fuld liste så tryk 3\n" +
-                "Vil du slutte programmet så tryk 4");
-        inputKey = input.nextInt();
-
 
     }
-        System.out.println("Tak for denne gang");
-
-}
-
-}

@@ -24,23 +24,23 @@ public class MovieCollection {
         }
     }
 
-    /*public String searchMovie(String title){ //user case 5
+    public String searchMovieMedToString(String title) { //user case 5
 
-        for(Movie films : movieListe){
-            if(films.getTitle().toLowerCase().contains(title.toLowerCase())){
-                return "Ja vi har filmen: " +films.toString();
+        for (Movie films : movieListe) {
+            if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                return "Ja vi har filmen: " + films.toString();
             }
         }
-
         return "Desværre vi har ikke filmen i samlingen.";
-    }*/
+    }
 
-    public ArrayList<Movie> searchMovie(String title) { //user case 6 jeg prøver at ændre denne til ren toString og ikke array senere
+    public ArrayList<Movie> searchMovie(String title) { //user case 6
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
             }
-        }return  searchMatch;
+        }
+        return searchMatch;
     }
 
 
