@@ -1,37 +1,33 @@
 import java.util.Scanner;
 
 public class UserInterface {
+    //create instance of Controller class
+    Controller samling1 = new Controller();
+    Scanner input = new Scanner(System.in);
+
+    int SENTINEL = 4;
+    int inputKey = 0;
 
     //Constructor
     public UserInterface() {
     }
 
-
-
-
     public void startProgram() {
+        userCommunication();
+        userChoice();
+    }
 
-        //create instance of Controller class
-        Controller samling1 = new Controller();
-
-        Scanner input = new Scanner(System.in);
-
-        int SENTINEL = 4;
-        int inputKey = 0;
-
-        //Her opretter jeg lige nogle film i MovieCollection
-        samling1.addMovie1("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
-        samling1.addMovie1("Godfather", "Coppola", 1972, true, 175, "Thriller");
-        samling1.addMovie1("La vita e bella", "Benigni", 1997, true, 120, "Drama");
-
+    public void userCommunication() {
         System.out.println("Velkommen til min filmsamling\n" +
                 "Tryk 1, hvis du vil oprette en film\n" +
                 "Tryk 2, hvis du vil søge på en filmtitel\n" +
                 "Tryk 3 hvis du vil se en fuld liste\n" +
                 "tryk 4 hvis du vil afslutte");
         inputKey = input.nextInt();
+    }
 
-        while (inputKey != SENTINEL) {  //ændre til at bruge SENTINEL og ikke break. variabel menuChoice
+    public void userChoice() {
+        while (inputKey != SENTINEL) {  //ændret til at bruge SENTINEL og ikke break. variabel menuChoice
 
             input.nextLine();//nødvendig for at kunne indsætte titel (scanner bug)
 
@@ -88,6 +84,24 @@ public class UserInterface {
         System.out.println("Tak for denne gang");
     }
 }
+
+
+/*//Her opretter jeg lige nogle film i MovieCollection
+        samling1.
+
+addMovie1("Burn After Reading","Coen",2008,true,120,"Komedie");
+        samling1.
+
+addMovie1("Godfather","Coppola",1972,true,175,"Thriller");
+        samling1.
+
+addMovie1("La vita e bella","Benigni",1997,true,120,"Drama");*/
+
+
+
+
+
+
 
 
 
