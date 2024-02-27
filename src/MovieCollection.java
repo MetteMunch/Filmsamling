@@ -4,6 +4,7 @@ public class MovieCollection {
 
     ArrayList<Movie> movieListe = new ArrayList<>();
     ArrayList<Movie> searchMatch = new ArrayList<>();
+    int indexToBeChanged;
 
 
     //constructor
@@ -18,6 +19,12 @@ public class MovieCollection {
         System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
     }
 
+    /*public void editMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+        movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
+        System.out.println("Du har ændret informationer på filmen: " + title);
+        System.out.println("");
+    }*/
+
     public void printFullListe() {
         for (Movie film : movieListe) {
             System.out.println(film.toString());
@@ -25,9 +32,9 @@ public class MovieCollection {
     }
 
     public String searchMovieMedToString(String title) { //user case 5
-
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                indexToBeChanged = movieListe.indexOf(films);
                 return "Ja vi har filmen: " + films.toString();
             }
         }

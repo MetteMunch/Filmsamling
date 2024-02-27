@@ -5,7 +5,7 @@ public class UserInterface {
     Controller samling1 = new Controller();
     Scanner input = new Scanner(System.in);
 
-    int SENTINEL = 4;
+    int SENTINEL = 5;
     int inputKey = 0;
 
     //Constructor
@@ -13,16 +13,22 @@ public class UserInterface {
     }
 
     public void startProgram() {
+//Jeg tilføjer lige nogle titler, så jeg har lidt at lege med...
+        samling1.addMovie1("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
+        samling1.addMovie1("Godfather", "Coppola", 1972, true, 175, "Thriller");
+        samling1.addMovie1("La vita e bella", "Benigni", 1997, true, 120, "Drama");
         userCommunication();
         userChoice();
+
     }
 
     public void userCommunication() {
         System.out.println("Velkommen til min filmsamling\n" +
                 "Tryk 1, hvis du vil oprette en film\n" +
                 "Tryk 2, hvis du vil søge på en filmtitel\n" +
-                "Tryk 3 hvis du vil se en fuld liste\n" +
-                "tryk 4 hvis du vil afslutte");
+                "Tryk 3, hvis du redigere en filmtitel\n" +
+                "Tryk 4 hvis du vil se en fuld liste\n" +
+                "tryk 5 hvis du vil afslutte");
         inputKey = input.nextInt();
     }
 
@@ -31,11 +37,11 @@ public class UserInterface {
 
             input.nextLine();//nødvendig for at kunne indsætte titel (scanner bug)
 
-            if (inputKey == 3) {//i denne printer den en liste med samtlige film
+            if (inputKey == 4) {//i denne printer den en liste med samtlige film
                 samling1.findAllMovies();
 
 
-            } else if (inputKey == 2) {
+            }/* else if (inputKey == 2) {
                 System.out.println("Hvilken film søger du?");
                 String inputTitle = input.nextLine();
                 for (Movie movie : samling1.findTitle(inputTitle)) {
@@ -45,10 +51,10 @@ public class UserInterface {
                     } else {
                         System.out.println("Desværre vi har ikke filmen");
                     }
-                }/* else if (inputKey == 2) { //user case 5, hvis der skal søges og udskrives med toString
-                        System.out.println("Skriv lidt af titlen på filmen, som du søger");
-                        String inputTitle = input.nextLine();
-                        System.out.println(samling1.findTitleMedToString(inputTitle));*/
+                }*/ else if (inputKey == 2) { //user case 5, hvis der skal søges og udskrives med toString
+                System.out.println("Skriv lidt af titlen på filmen, som du søger");
+                String inputTitle = input.nextLine();
+                System.out.println(samling1.findTitleMedToString(inputTitle));
 
 
             } else if (inputKey == 1) {
@@ -73,7 +79,7 @@ public class UserInterface {
                 samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
 
             }
-            System.out.println("Vil du tilføje en film mere så tryk 1\n" +
+            System.out.println("\nVil du tilføje en film mere så tryk 1\n" +
                     "Vil du søge på en filmtitel så tryk 2\n" +
                     "Vil du se en fuld liste så tryk 3\n" +
                     "Vil du slutte programmet så tryk 4");
@@ -85,17 +91,6 @@ public class UserInterface {
     }
 }
 
-
-/*//Her opretter jeg lige nogle film i MovieCollection
-        samling1.
-
-addMovie1("Burn After Reading","Coen",2008,true,120,"Komedie");
-        samling1.
-
-addMovie1("Godfather","Coppola",1972,true,175,"Thriller");
-        samling1.
-
-addMovie1("La vita e bella","Benigni",1997,true,120,"Drama");*/
 
 
 
