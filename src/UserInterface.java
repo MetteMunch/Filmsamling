@@ -89,9 +89,38 @@ public class UserInterface {
         System.out.println(samling1.findTitleMedToString(inputTitle));
     }
 
-    public void redigerFilm() {
-        //her kommer kode
+    public void redigerFilm() { //jeg er ikke i mål med denne usercase 8 - editering af film!
+        String filmToChange;
+        System.out.println("Angiv titel på filmen, som du vil redigere:");
+        filmToChange = input.nextLine();// skal bruge nextLine når der kan være flere ord ellers er next ok
+        System.out.println(samling1.findTitleMedToString(filmToChange));
+        System.out.println("Hvad ønsker du at ændre?\n" +
+                "Titel, så tryk 1\n" +
+                "Director, så tryk 2\n" +
+                "Genre, så tryk 3\n" +
+                "Premiere år, så tryk 4\n" +
+                "Farve el.S/H, så tryk 5\n" +
+                "Varighed, så tryk 6\n" +
+                "Slet film fra listen, så tryk 7\n");
+        inputKey = input.nextInt();
+        // mangler resten...
+        /*if(inputKey == 1){
+            //kode til at ændre titel
+            samling1.getInstanceMovieCollection().movieListe<0>;
+        } else if (inputKey == 7){
+            System.out.println("Er du sikker på, at du vil slette filmen fra samlingen?\n " +
+                    "Tryk 1 hvis du vil slette og tryk 2 hvis du har fortrudt");
+            inputKey = input.nextInt();
+            if(inputKey == 1){
+
+            }*/
+
+
     }
+
+
+
+
 
     public void findFilmMedNyArray() {
         System.out.println("Hvilken film søger du?");

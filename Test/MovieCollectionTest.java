@@ -43,4 +43,5 @@ class MovieCollectionTest {
         int expectedValue = 2;
         Assertions.assertEquals(expectedValue,actualValue);
     }
+
 }

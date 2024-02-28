@@ -28,4 +28,8 @@ public class Controller {
     public String findTitleMedToString(String title) { //til user case 5
         return instanceMovieCollection.searchMovieMedToString(title);
     }
+
+    public void deleteMovie(){
+        getInstanceMovieCollection().deleteMovie();
+    }
 }
