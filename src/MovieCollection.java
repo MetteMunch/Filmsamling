@@ -43,7 +43,7 @@ public class MovieCollection {
         return "Desværre vi har ikke filmen i samlingen.";
     }
 
-    public ArrayList<Movie> searchMovie(String title) { //user case 6 prøv at lave denne om til String i stedet for Array, så der bruges toString
+    public ArrayList<Movie> searchMovie(String title) {
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
