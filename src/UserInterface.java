@@ -142,11 +142,13 @@ public class UserInterface {
 
     public void findFilmMedNyArray() {
         System.out.println("Hvilken film søger du?");
+        int count = 1;
         String inputTitle = input.next();
         for (Movie movie : samling1.findTitle(inputTitle)) {
             if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
                 System.out.println("\n Vi har denne film i samlingen: ");
-                System.out.print(movie);
+                System.out.print(count + ". " +movie );
+                count++;
             } else {
                 System.out.println("Desværre vi har ikke filmen");
             }
