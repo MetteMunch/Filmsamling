@@ -60,7 +60,7 @@ public class Movie {
         return title;
     }
 
-    public String gerDirector() {
+    public String getDirector() {
         return director;
     }
 

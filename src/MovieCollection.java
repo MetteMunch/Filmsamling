@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class MovieCollection {
 
-    ArrayList<Movie> movieListe = new ArrayList<>();
-    ArrayList<Movie> searchMatch = new ArrayList<>();
+    private ArrayList<Movie> movieListe = new ArrayList<>();
+    private ArrayList<Movie> searchMatch = new ArrayList<>();//ny ArrayList til at gemme søge resultater i
     int indexToBeChanged;
 
 
@@ -13,21 +13,27 @@ public class MovieCollection {
 
 
     //metoder
+
+    //usercase 1 - opret film
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
         System.out.println("Du har tilføjet filmen: " + title);
         System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
     }
 
+    //metode ifm usercase 8, som jeg arbejder på...
     public void deleteMovie() {
         movieListe.remove(indexToBeChanged);
         System.out.println("Filmen er blevet slettet");
     }
 
-    /*public void editMovie() {
+    /*public void editMovie(int movieToBeChanged) {
+        int movieToBeChanged;
         movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
         System.out.println("Du har ændret informationer på filmen: " + title);
         System.out.println("");
+
+
     }*/
 
     public void printFullListe() {
@@ -50,6 +56,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
+                indexToBeChanged = searchMatch.indexOf(films);
             }
         }
         return searchMatch;

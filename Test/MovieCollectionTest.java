@@ -18,7 +18,7 @@ class MovieCollectionTest {
         nyFilmSamling.addMovie("Livet er smukt", "Benigni", 1999, true, 120, "Drama");
 
         //Act
-        int actualSizeOfList = nyFilmSamling.movieListe.size();
+        int actualSizeOfList = nyFilmSamling.getMovieListe().size();
 
         //Assert
         int expectedSizeOfList = 4;
@@ -37,7 +37,7 @@ class MovieCollectionTest {
 
         //Act
         nyFilmSamling.searchMovie("Film");
-        int actualValue = nyFilmSamling.searchMatch.size();
+        int actualValue = nyFilmSamling.getSearchMatch().size();
         //Assert
 
         int expectedValue = 2;
