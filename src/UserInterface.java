@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -12,7 +14,7 @@ public class UserInterface {
     //Constructor
     public UserInterface() {
         input = new Scanner(System.in);
-        input.useDelimiter("\n");
+        input.useDelimiter("\n");//denne gør sådan, at jeg ikke får scanner bugs, men skal huske at bruge next og ikke nextLine
     }
 
     public void startProgram() {
@@ -75,8 +77,21 @@ public class UserInterface {
         System.out.println("Angiv genre på filmen, vælg mellem action, thriller, drama, komedie, gyser, romantik, krimi eller sci-fi:");
         String genre = input.next();
 
-        System.out.println("Hvilket år havde den premiere");
-        int yearCreated = input.nextInt();
+        //indarbejdelse af try/catch
+        int yearCreated = 0;
+        boolean exceptionHandling = false;
+        while (!exceptionHandling) {
+            try {
+                System.out.println("Hvilket år havde den premiere");
+                yearCreated = input.nextInt();
+                exceptionHandling = true;
+            } catch (InputMismatchException ime) {
+                System.out.println("Den går ikke, du skal indtaste et årstal,\n" +
+                        " prøv igen");
+                input.nextLine();
+            }
+        }
+
 
         System.out.println("Skriv true, hvis filmen er i farver og false, hvis den s/h:");
         boolean isInColor = input.nextBoolean();

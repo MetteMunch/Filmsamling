@@ -57,6 +57,9 @@ public class MovieCollection {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
                 indexToBeChanged = searchMatch.indexOf(films);
+                /*int indexOfMovie= searchMatch.indexOf(films);
+                Movie target= searchMatch.get(0);
+                target.number =*/
             }
         }
         return searchMatch;

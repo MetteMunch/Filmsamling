@@ -7,6 +7,5 @@ public class Main {
         UserInterface ui = new UserInterface();//instance of UserInterface class
         ui.startProgram();
 
-
     }
 }
