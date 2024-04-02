@@ -9,7 +9,7 @@ public class UserInterface {
 
     int SENTINEL = 5;
     int inputKey = 0;
-    int filmIndex = 9;
+    int filmIndexNo = 9;
 
 
     //Constructor
@@ -34,7 +34,6 @@ public class UserInterface {
 
 
             } else if (inputKey == 2) {
-                //findFilm();
                 findFilmMedNyArray();
 
 
@@ -43,8 +42,7 @@ public class UserInterface {
 
 
             } else if (inputKey == 3) {
-                findMovieSingleResult();
-                //editMovie();
+                findAndEditMovie();
 
 
             } else if (inputKey == 6) {
@@ -59,24 +57,24 @@ public class UserInterface {
 
     public void userCommunication() {//usercase 2 og tilrettet i de følgende
         System.out.println("Velkommen til min filmsamling\n" +
-                "Tryk 1, hvis du vil oprette en film\n" +
-                "Tryk 2, hvis du vil søge på en filmtitel\n" +
-                "Tryk 3, hvis du vil redigere en filmtitel\n" +
-                "Tryk 4 hvis du vil se en fuld liste\n" +
-                "tryk 5 hvis du vil afslutte");
+                "Type 1, if you want to add a movie.\n" +
+                "Type 2, if you want to search for a title.\n" +
+                "Type 3, if you want to edit or delete a movie in the collection.\n" +
+                "Type 4, if you wat to see the full movie collection.\n" +
+                "Type 5, if you want to exit the program.");
         inputKey = input.nextInt();
         //input.nextLine();
 
     }
 
     public void opretFilm() {
-        System.out.println("Angiv titel på filmen, som du vil tilføje:");
+        System.out.println("Type the title of the movie you want to add:");
         String title = input.next();// skal bruge nextLine når der kan være flere ord ellers er next ok
 
-        System.out.println("Angiv director på filmen:");
+        System.out.println("Type the director of the movie:");
         String director = input.next();
 
-        System.out.println("Angiv genre på filmen, vælg mellem action, thriller, drama, komedie, gyser, romantik, krimi eller sci-fi:");
+        System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");
         String genre = input.next();
 
         //indarbejdelse af try/catch
@@ -84,32 +82,31 @@ public class UserInterface {
         boolean exceptionHandling = false;
         while (!exceptionHandling) {
             try {
-                System.out.println("Hvilket år havde den premiere");
+                System.out.println("Year of premiere: ");
                 yearCreated = input.nextInt();
                 exceptionHandling = true;
             } catch (InputMismatchException ime) {
-                System.out.println("Den går ikke, du skal indtaste et årstal,\n" +
-                        " prøv igen");
+                System.out.println("Sorry you have to type a year, try again.");
                 input.nextLine();
             }
         }
 
 
-        System.out.println("Skriv true, hvis filmen er i farver og false, hvis den s/h:");
+        System.out.println("Type true if the movie is in color or false if it is black/white.");
         boolean isInColor = input.nextBoolean();
 
-        System.out.println("Hvor mange minutter varer filmen?");
+        System.out.println("Type the duration of the movie in minutes.");
         int lengthInMinutes = input.nextInt();
 
         addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
     public void gentagMenu() {
-        System.out.println("\nVil du tilføje en film mere så tryk 1\n" +
-                "Vil du søge på en filmtitel så tryk 2\n" +
-                "Vil du redigere en filmtitel så tryk 3\n" +
-                "Vil du se en fuld liste så tryk 4\n" +
-                "Vil du slutte programmet så tryk 5");
+        System.out.println("\nIf you want to add another movie, type 1.\n" +
+                "If you want to search for a title, type 2.\n" +
+                "If you want to edit or delete a title, type 3.\n" +
+                "If you want to see a full list of the movie collection, type 4.\n" +
+                "If you want to exit the program, type 5.");
         inputKey = input.nextInt();
     }
 
@@ -121,13 +118,13 @@ public class UserInterface {
         }
     }
 
-    public void findMovieSingleResult() {//her vises kun første match
+    public void findAndEditMovie() {//her vises kun første match
         //user case 5, hvis der skal søges og udskrives med toString
         System.out.println("Which movie do you like to edit?");
         String inputTitle = input.next();
         String result = samling1.findTitleMedToString(inputTitle);
-        filmIndex = samling1.getInstanceMovieCollection().indexToBeChanged;
-        System.out.println(result);
+        filmIndexNo = samling1.getIndexToBeChanged();
+        //System.out.println("Dette er filmIndexNo: " +filmIndexNo + " Dette er filmtitel: " +result);
         if (result.equals("noMovie")) {
             System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
         } else {
@@ -135,71 +132,75 @@ public class UserInterface {
             System.out.println("Is it the correct movie, which you want to edit? yes/no");
             String answer = input.next();
             if (answer.toLowerCase().equals("yes")) {
-                editMovie(filmIndex);
+                System.out.println("What would you like to change? Type number.\n" +
+                        "1.Title\n" +
+                        "2.Director\n" +
+                        "3.Genre\n" +
+                        "4.Premiere\n" +
+                        "5.Color or black/white\n" +
+                        "6.Duration in minutes" +
+                        "7.Delete movie from collection\n");
+                inputKey = input.nextInt();
+
+                switch(inputKey) {
+                    case 1 -> {
+                        //changeTitle(filmIndex);
+                    }
+                    case 2 -> {
+                        //changeDirector(filmIndex);
+                    }
+                    case 3 -> {
+                        //changeGenre(filmIndex);
+                    }
+                    case 4 -> {
+                        //changeYear(filmIndex);
+                    }
+                    case 5 -> {
+                        //changeColor(filmIndex);
+                    }
+                    case 6 -> {
+                        //changeDuration(filmIndex);
+                    }
+                    case 7 -> {
+                        deleteMovie();
+                    }
+                }
+
             } else if (answer.toLowerCase().equals("no")) {
                 System.out.println("Then try to search again with a bit more information");
-                findMovieSingleResult();
+                findAndEditMovie();
             }
         }
     }
 
-    public void editMovie(int filmIndex) {
 
-        System.out.println("Type the number of what you like to change\n" +
-                "1.Title\n" +
-                "2.Director\n" +
-                "3.Genre\n" +
-                "4.Premiere år\n" +
-                "5.Farve el.S/H\n" +
-                "6.Varighed\n" +
-                "7.Slet film fra listen\n");
-        inputKey = input.nextInt();
 
-        switch(inputKey) {
-            case 1 -> {
-                //changeTitle(filmIndex);
-            }
-            case 2 -> {
-                //changeDirector(filmIndex);
-            }
-            case 3 -> {
-                //changeGenre(filmIndex);
-            }
-            case 4 -> {
-                //changeYear(filmIndex);
-            }
-            case 5 -> {
-                //changeColor(filmIndex);
-            }
-            case 6 -> {
-                //changeDuration(filmIndex);
-            }
-            case 7 -> {
-                deleteMovie(filmIndex);
-            }
-        }
-    }
+
 
     public void findFilmMedNyArray() {
-        System.out.println("Hvilken film søger du?");
+        System.out.println("Which movie are you looking for?");
         int count = 1;
         String inputTitle = input.next();
         for (Movie movie : samling1.findTitle(inputTitle)) {
             if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
-                System.out.println("\n Vi har denne film i samlingen: ");
+                System.out.println("\n We have this movie in the collection: ");
                 System.out.print(count + ". " + movie);
                 count++;
             } else {
-                System.out.println("Desværre vi har ikke filmen");
+                System.out.println("I am sorry we do not have this movie in the collection.");
             }
         }
     }
 
-    public void deleteMovie(int filmIndex){
-        filmIndex = this.filmIndex;//det virker ikke lige nu, men at den tager korrekt index nummer med???
-        System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndex));
-        //String movieToDelete = samling1.getInstanceMovieCollection().getMovieListe().indexOf(filmIndex);
-        System.out.println("Are you sudden that you will delete " +"movieToDelete" + "?");
+    public void deleteMovie(){
+        System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        System.out.println("Are you sure you want to delete this movie from the collection, yes/no?");
+        String answer = input.next();
+        if (answer.toLowerCase().equals("yes")) {
+            samling1.deleteMovie();
+    } else {
+            System.out.println("Okay then lets move on");
+        }
     }
 }
 

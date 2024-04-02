@@ -33,7 +33,11 @@ public class Controller {
         return instanceMovieCollection.searchMovieMedToString(title);
     }
 
-    public String deleteMovie(){
-        return getInstanceMovieCollection().deleteMovie();
+    public void deleteMovie(){
+        getInstanceMovieCollection().deleteMovie();
+    }
+
+    public int getIndexToBeChanged() {
+        return instanceMovieCollection.getIndexToBeChanged();
     }
 }

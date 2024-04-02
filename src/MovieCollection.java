@@ -4,7 +4,7 @@ public class MovieCollection {
 
     private ArrayList<Movie> movieListe = new ArrayList<>();
     private ArrayList<Movie> searchMatch = new ArrayList<>();//ny ArrayList til at gemme søge resultater i
-    int indexToBeChanged;
+    private int indexToBeChanged = 5;
 
 
     //constructor
@@ -22,10 +22,8 @@ public class MovieCollection {
     }
 
     //metode ifm usercase 8, som jeg arbejder på...
-    public String deleteMovie() {
-        String result = "movieDeleted";
+    public void deleteMovie() {
         movieListe.remove(indexToBeChanged);
-        return result;
     }
 
     /*public void editMovie(int movieToBeChanged) {
@@ -49,6 +47,7 @@ public class MovieCollection {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 result = " "+ films.toString() + " FilmNo. " +indexToBeChanged;
+                break;
             }
         }
         return result;
@@ -58,7 +57,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
-                indexToBeChanged = searchMatch.indexOf(films);
+                //indexToBeChanged = searchMatch.indexOf(films);
                 /*int indexOfMovie= searchMatch.indexOf(films);
                 Movie target= searchMatch.get(0);
                 target.number =*/
@@ -74,5 +73,9 @@ public class MovieCollection {
 
     public ArrayList<Movie> getSearchMatch() {//getter for at kunne kalde searchMatch af typen Movie.
         return searchMatch;
+    }
+
+    public int getIndexToBeChanged() {
+        return indexToBeChanged;
     }
 }
