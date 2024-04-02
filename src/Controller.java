@@ -40,4 +40,8 @@ public class Controller {
     public int getIndexToBeChanged() {
         return instanceMovieCollection.getIndexToBeChanged();
     }
+
+    public String setTitle (int indexToBeChanged, String newTitle){
+        return instanceMovieCollection.setTitle(indexToBeChanged, newTitle);
+    }
 }
