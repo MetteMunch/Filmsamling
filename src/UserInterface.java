@@ -9,6 +9,7 @@ public class UserInterface {
 
     int SENTINEL = 5;
     int inputKey = 0;
+    int filmIndex = 9;
 
 
     //Constructor
@@ -19,9 +20,9 @@ public class UserInterface {
 
     public void startProgram() {
 //Jeg tilføjer lige nogle titler, så jeg har lidt at lege med...
-        samling1.addMovie1("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
-        samling1.addMovie1("Godfather", "Coppola", 1972, true, 175, "Thriller");
-        samling1.addMovie1("La vita e bella", "Benigni", 1997, true, 120, "Drama");
+        samling1.addMovie2("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
+        samling1.addMovie2("Godfather", "Coppola", 1972, true, 175, "Thriller");
+        samling1.addMovie2("La vita e bella", "Benigni", 1997, true, 120, "Drama");
 
         userCommunication();//Her kalder jeg metoden, hvor user oplyses om valgmuligheder
 
@@ -42,7 +43,8 @@ public class UserInterface {
 
 
             } else if (inputKey == 3) {
-                redigerFilm();
+                findMovieSingleResult();
+                //editMovie();
 
 
             } else if (inputKey == 6) {
@@ -99,7 +101,7 @@ public class UserInterface {
         System.out.println("Hvor mange minutter varer filmen?");
         int lengthInMinutes = input.nextInt();
 
-        samling1.addMovie1(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+        addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
     public void gentagMenu() {
@@ -111,33 +113,71 @@ public class UserInterface {
         inputKey = input.nextInt();
     }
 
-    public void findFilm() {//her vises kun første match
-        //user case 5, hvis der skal søges og udskrives med toString
-        System.out.println("Skriv lidt af titlen på filmen, som du søger");
-        String inputTitle = input.next();
-        System.out.println(samling1.findTitleMedToString(inputTitle));
+    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+        String result = samling1.addMovie2(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+        if (result.equals("true")) {
+            System.out.println("You have added the movie: " + title);
+            System.out.println("The collection now contains: " + samling1.getInstanceMovieCollection().getMovieListe().size() + " film.");
+        }
     }
 
-    public void redigerFilm() { //jeg er ikke i mål med denne usercase 8 - editering af film!
-        // Kig på brug af switch, så der ikke anvendes så mange if else!
-        String filmToChange;
-        int filmIndex;
-        System.out.println("Angiv titel på filmen, som du vil redigere:");
-        filmToChange = input.next();
-        System.out.println(samling1.findTitle(filmToChange));
-        System.out.println("Skriv nummer på den film, som du vil ændre");
-        filmIndex = input.nextInt();
-        System.out.println("Hvad ønsker du at ændre?\n" +
-                "Titel, så tryk 1\n" +
-                "Director, så tryk 2\n" +
-                "Genre, så tryk 3\n" +
-                "Premiere år, så tryk 4\n" +
-                "Farve el.S/H, så tryk 5\n" +
-                "Varighed, så tryk 6\n" +
-                "Slet film fra listen, så tryk 7\n");
+    public void findMovieSingleResult() {//her vises kun første match
+        //user case 5, hvis der skal søges og udskrives med toString
+        System.out.println("Which movie do you like to edit?");
+        String inputTitle = input.next();
+        String result = samling1.findTitleMedToString(inputTitle);
+        filmIndex = samling1.getInstanceMovieCollection().indexToBeChanged;
+        System.out.println(result);
+        if (result.equals("noMovie")) {
+            System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
+        } else {
+            System.out.println("We have this movie in the collection: " + samling1.findTitleMedToString(inputTitle));
+            System.out.println("Is it the correct movie, which you want to edit? yes/no");
+            String answer = input.next();
+            if (answer.toLowerCase().equals("yes")) {
+                editMovie(filmIndex);
+            } else if (answer.toLowerCase().equals("no")) {
+                System.out.println("Then try to search again with a bit more information");
+                findMovieSingleResult();
+            }
+        }
+    }
+
+    public void editMovie(int filmIndex) {
+
+        System.out.println("Type the number of what you like to change\n" +
+                "1.Title\n" +
+                "2.Director\n" +
+                "3.Genre\n" +
+                "4.Premiere år\n" +
+                "5.Farve el.S/H\n" +
+                "6.Varighed\n" +
+                "7.Slet film fra listen\n");
         inputKey = input.nextInt();
-        // mangler resten...
-        //vil prøve at lave noget med switch og case
+
+        switch(inputKey) {
+            case 1 -> {
+                //changeTitle(filmIndex);
+            }
+            case 2 -> {
+                //changeDirector(filmIndex);
+            }
+            case 3 -> {
+                //changeGenre(filmIndex);
+            }
+            case 4 -> {
+                //changeYear(filmIndex);
+            }
+            case 5 -> {
+                //changeColor(filmIndex);
+            }
+            case 6 -> {
+                //changeDuration(filmIndex);
+            }
+            case 7 -> {
+                deleteMovie(filmIndex);
+            }
+        }
     }
 
     public void findFilmMedNyArray() {
@@ -147,12 +187,19 @@ public class UserInterface {
         for (Movie movie : samling1.findTitle(inputTitle)) {
             if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
                 System.out.println("\n Vi har denne film i samlingen: ");
-                System.out.print(count + ". " +movie );
+                System.out.print(count + ". " + movie);
                 count++;
             } else {
                 System.out.println("Desværre vi har ikke filmen");
             }
         }
+    }
+
+    public void deleteMovie(int filmIndex){
+        filmIndex = this.filmIndex;//det virker ikke lige nu, men at den tager korrekt index nummer med???
+        System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndex));
+        //String movieToDelete = samling1.getInstanceMovieCollection().getMovieListe().indexOf(filmIndex);
+        System.out.println("Are you sudden that you will delete " +"movieToDelete" + "?");
     }
 }
 

@@ -13,6 +13,10 @@ public class Controller {
         instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
+    public String addMovie2 (String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+        return instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+    }
+
     public MovieCollection getInstanceMovieCollection() {
         return instanceMovieCollection;//getter til instanceMovieCollection og typen er MovieCollection
     }
@@ -29,7 +33,7 @@ public class Controller {
         return instanceMovieCollection.searchMovieMedToString(title);
     }
 
-    public void deleteMovie(){
-        getInstanceMovieCollection().deleteMovie();
+    public String deleteMovie(){
+        return getInstanceMovieCollection().deleteMovie();
     }
 }

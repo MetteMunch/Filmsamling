@@ -15,16 +15,17 @@ public class MovieCollection {
     //metoder
 
     //usercase 1 - opret film
-    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
-        System.out.println("Du har tilføjet filmen: " + title);
-        System.out.println("Filmsamlingen indeholder nu samlet: " + movieListe.size() + " film.");
+        String result = "true";
+        return result;
     }
 
     //metode ifm usercase 8, som jeg arbejder på...
-    public void deleteMovie() {
+    public String deleteMovie() {
+        String result = "movieDeleted";
         movieListe.remove(indexToBeChanged);
-        System.out.println("Filmen er blevet slettet");
+        return result;
     }
 
     /*public void editMovie(int movieToBeChanged) {
@@ -43,13 +44,14 @@ public class MovieCollection {
     }
 
     public String searchMovieMedToString(String title) { //user case 5
+        String result = "noMovie";
         for (Movie films : movieListe) {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                return "Ja vi har filmen: " + films.toString();
+                result = " "+ films.toString() + " FilmNo. " +indexToBeChanged;
             }
         }
-        return "Desværre vi har ikke filmen i samlingen.";
+        return result;
     }
 
     public ArrayList<Movie> searchMovie(String title) {
