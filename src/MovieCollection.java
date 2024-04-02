@@ -21,9 +21,20 @@ public class MovieCollection {
         return result;
     }
 
-    //metode ifm usercase 8, som jeg arbejder på...
+    //metoder til editing og delete
     public void deleteMovie() {
         movieListe.remove(indexToBeChanged);
+    }
+
+    public String setTitle(int indexToBeChanged, String newTitle) {
+        String result = "noChange";
+        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setTitle(newTitle);
+            result = "titleChanged";
+        }
+        return result;
+
     }
 
     /*public void editMovie(int movieToBeChanged) {

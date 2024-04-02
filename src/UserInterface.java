@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,7 +18,7 @@ public class UserInterface {
     }
 
     public void startProgram() {
-//Jeg tilføjer lige nogle titler, så jeg har lidt at lege med...
+        //Jeg tilføjer lige nogle titler, så jeg har lidt at lege med...
         samling1.addMovie2("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
         samling1.addMovie2("Godfather", "Coppola", 1972, true, 175, "Thriller");
         samling1.addMovie2("La vita e bella", "Benigni", 1997, true, 120, "Drama");
@@ -27,13 +26,12 @@ public class UserInterface {
         userCommunication();//Her kalder jeg metoden, hvor user oplyses om valgmuligheder
 
         while (inputKey != SENTINEL) {
-            //input.nextLine();//nødvendig for at kunne indsætte titel (scanner bug)
 
-            if (inputKey == 4) {//i denne printer den en liste med samtlige film
+            if (inputKey == 4) {  //i denne printer den en liste med samtlige film
                 samling1.findAllMovies();
 
 
-            } else if (inputKey == 2) {
+            } else if (inputKey == 2) {  //denne søger efter en specifik titel
                 findFilmMedNyArray();
 
 
@@ -49,14 +47,14 @@ public class UserInterface {
                 userCommunication();
 
             }
-            gentagMenu();
+            repeatMenu();
         }
-        System.out.println("Tak for denne gang");
+        System.out.println("Thank you and see you soon.");
 
     }
 
     public void userCommunication() {//usercase 2 og tilrettet i de følgende
-        System.out.println("Velkommen til min filmsamling\n" +
+        System.out.println("Welcome to the movie collection!\n" +
                 "Type 1, if you want to add a movie.\n" +
                 "Type 2, if you want to search for a title.\n" +
                 "Type 3, if you want to edit or delete a movie in the collection.\n" +
@@ -101,7 +99,7 @@ public class UserInterface {
         addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
-    public void gentagMenu() {
+    public void repeatMenu() {
         System.out.println("\nIf you want to add another movie, type 1.\n" +
                 "If you want to search for a title, type 2.\n" +
                 "If you want to edit or delete a title, type 3.\n" +
@@ -144,7 +142,7 @@ public class UserInterface {
 
                 switch(inputKey) {
                     case 1 -> {
-                        //changeTitle(filmIndex);
+                        changeTitle();
                     }
                     case 2 -> {
                         //changeDirector(filmIndex);
@@ -190,6 +188,20 @@ public class UserInterface {
                 System.out.println("I am sorry we do not have this movie in the collection.");
             }
         }
+    }
+
+    public void changeTitle() {
+        System.out.println("What do you want to change the title to?");
+        String inputNewTitle = input.next();
+        samling1.setTitle(filmIndexNo, inputNewTitle);
+        String result = samling1.setTitle(filmIndexNo, inputNewTitle);
+        if(result.equals("titleChanged")) {
+            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry some information where incorrect!");
+        }
+
     }
 
     public void deleteMovie(){
