@@ -44,4 +44,8 @@ public class Controller {
     public String setTitle (int indexToBeChanged, String newTitle){
         return instanceMovieCollection.setTitle(indexToBeChanged, newTitle);
     }
+
+    public String setDuration(int indexToBeChanged, int newDuration) {
+        return instanceMovieCollection.setDuration(indexToBeChanged, newDuration);
+    }
 }

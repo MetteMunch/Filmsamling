@@ -158,7 +158,7 @@ public class UserInterface {
                         //changeColor(filmIndex);
                     }
                     case 6 -> {
-                        //changeDuration(filmIndex);
+                        changeDuration();
                     }
                     case 7 -> {
                         deleteMovie();
@@ -203,6 +203,17 @@ public class UserInterface {
             System.out.println("Sorry some information where incorrect!");
         }
 
+    }
+
+    public void changeDuration() {
+        System.out.println("What would you like to change the duration to?");
+        int newDuration = input.nextInt();
+        samling1.setDuration(filmIndexNo, newDuration);
+        String result = samling1.setDuration(filmIndexNo, newDuration);
+        if(result.equals("durationChanged")) {
+            System.out.println("You have now succesfully changed the duration of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }
     }
 
     public void deleteMovie(){

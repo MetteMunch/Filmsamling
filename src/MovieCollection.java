@@ -34,8 +34,18 @@ public class MovieCollection {
             result = "titleChanged";
         }
         return result;
-
     }
+
+    public String setDuration(int indexToBeChanged, int newDuration) {
+        String result = "noChange";
+        if(indexToBeChanged>=0 && indexToBeChanged < movieListe.size()) {
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setLengthInMinutes(newDuration);
+            result = "durationChanged";
+        }
+        return result;
+    }
+
 
     /*public void editMovie(int movieToBeChanged) {
         int movieToBeChanged;
