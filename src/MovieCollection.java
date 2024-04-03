@@ -4,7 +4,7 @@ public class MovieCollection {
 
     private ArrayList<Movie> movieListe = new ArrayList<>();
     private ArrayList<Movie> searchMatch = new ArrayList<>();//ny ArrayList til at gemme søge resultater i
-    private int indexToBeChanged = 5;
+    private int indexToBeChanged;
 
 
     //constructor
@@ -57,7 +57,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result = " "+ films.toString() + " FilmNo. " +indexToBeChanged;
+                result = " "+ films + " FilmNo. " +indexToBeChanged;
                 break;
             }
         }

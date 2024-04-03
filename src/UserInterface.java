@@ -15,6 +15,7 @@ public class UserInterface {
     public UserInterface() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");//denne gør sådan, at jeg ikke får scanner bugs, men skal huske at bruge next og ikke nextLine
+        startProgram();
     }
 
     public void startProgram() {
@@ -136,7 +137,7 @@ public class UserInterface {
                         "3.Genre\n" +
                         "4.Premiere\n" +
                         "5.Color or black/white\n" +
-                        "6.Duration in minutes" +
+                        "6.Duration in minutes\n" +
                         "7.Delete movie from collection\n");
                 inputKey = input.nextInt();
 
