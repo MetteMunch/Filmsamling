@@ -149,7 +149,7 @@ public class UserInterface {
                         //changeDirector(filmIndex);
                     }
                     case 3 -> {
-                        //changeGenre(filmIndex);
+                        changeGenre();
                     }
                     case 4 -> {
                         //changeYear(filmIndex);
@@ -202,7 +202,19 @@ public class UserInterface {
         } else {
             System.out.println("Sorry some information where incorrect!");
         }
+    }
 
+    public void changeGenre() {
+        System.out.println("What do you want to change the genre to?");
+        String inputNewGenre = input.next();
+        samling1.setGenre(filmIndexNo, inputNewGenre);
+        String result = samling1.setGenre(filmIndexNo, inputNewGenre);
+        if(result.equals("genreChanged")) {
+            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry some information where incorrect!");
+        }
     }
 
     public void deleteMovie(){
