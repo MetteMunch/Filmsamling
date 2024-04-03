@@ -152,13 +152,13 @@ public class UserInterface {
                         //changeGenre(filmIndex);
                     }
                     case 4 -> {
-                        //changeYear(filmIndex);
+                        changeYear();
                     }
                     case 5 -> {
                         //changeColor(filmIndex);
                     }
                     case 6 -> {
-                        //changeDuration(filmIndex);
+                        //changeDuration();
                     }
                     case 7 -> {
                         deleteMovie();
@@ -194,9 +194,23 @@ public class UserInterface {
     public void changeTitle() {
         System.out.println("What do you want to change the title to?");
         String inputNewTitle = input.next();
-        samling1.setTitle(filmIndexNo, inputNewTitle);
+        //samling1.setTitle(filmIndexNo, inputNewTitle);
         String result = samling1.setTitle(filmIndexNo, inputNewTitle);
         if(result.equals("titleChanged")) {
+            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry some information where incorrect!");
+        }
+
+    }
+
+    public void changeYear() {
+        System.out.println("What do you want to change the year of premiere to?");
+        int inputNewYear = input.nextInt();
+        //samling1.setYear(filmIndexNo, inputNewYear);
+        String result = samling1.setYear(filmIndexNo, inputNewYear);
+        if(result.equals("yearChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         } else {

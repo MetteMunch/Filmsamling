@@ -36,15 +36,16 @@ public class MovieCollection {
         return result;
 
     }
+    public String setYear(int indexToBeChanged, int newYear) {
+        String result = "noChange";
+        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setYearCreated(newYear);
+            result = "yearChanged";
+        }
+        return result;
 
-    /*public void editMovie(int movieToBeChanged) {
-        int movieToBeChanged;
-        movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
-        System.out.println("Du har ændret informationer på filmen: " + title);
-        System.out.println("");
-
-
-    }*/
+    }
 
     public void printFullListe() {
         for (Movie film : movieListe) {
