@@ -46,6 +46,16 @@ public class MovieCollection {
         return result;
     }
 
+    public String setIsInColor(int indexToBeChanged, boolean isInColor) {
+        String result = "noChange";
+        if(indexToBeChanged >=0 && indexToBeChanged < movieListe.size()) {
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setIsInColor(isInColor);
+            result = "colorChanged";
+        }
+        return result;
+    }
+
 
     /*public void editMovie(int movieToBeChanged) {
         int movieToBeChanged;

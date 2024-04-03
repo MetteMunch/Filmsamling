@@ -155,7 +155,7 @@ public class UserInterface {
                         //changeYear(filmIndex);
                     }
                     case 5 -> {
-                        //changeColor(filmIndex);
+                        changeColor();
                     }
                     case 6 -> {
                         changeDuration();
@@ -213,6 +213,26 @@ public class UserInterface {
         if(result.equals("durationChanged")) {
             System.out.println("You have now succesfully changed the duration of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }
+    }
+
+    public void changeColor() {
+        System.out.println("Is this movie in color? Type yes/no.");
+        String colorInput = input.next().toLowerCase();
+
+        if(colorInput.equals("yes")) {
+            boolean newColor = true;
+            samling1.setIsInColor(filmIndexNo,newColor);
+            System.out.println("You have succesfully changed the color aspect of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }else if(colorInput.equals("no")) {
+            boolean newColor = false;
+            samling1.setIsInColor(filmIndexNo,newColor);
+            System.out.println("You have succesfully changed the color aspect of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }
+        else {
+            System.out.println("No changes were made.");
         }
     }
 
