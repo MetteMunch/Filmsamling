@@ -37,6 +37,16 @@ public class MovieCollection {
 
     }
 
+    public String setDirector(int indexToBeChanged, String newDirector) {
+        String result = "noChange";
+        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
+            Movie direcetorToBeChanged = movieListe.get(indexToBeChanged);
+            direcetorToBeChanged.setDirector(newDirector);
+            result = "directorChanged";
+        }
+        return result;
+    }
+
     /*public void editMovie(int movieToBeChanged) {
         int movieToBeChanged;
         movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));

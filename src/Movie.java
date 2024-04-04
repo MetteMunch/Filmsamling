@@ -22,7 +22,7 @@ public class Movie {
 
     @Override //en slags stavekontrol  kaldes ved at kalde metoden Movies.toString()
     public String toString() {
-        String result = " ";
+        String result = "";
         result += "Filmtitel: " + title + " , Instruktør: " + director + " , Genre: " + genre + " , Filmlængde i min.:" + lengthInMinutes;
         if (isInColor) {
             result += " , Filmen er i farver";

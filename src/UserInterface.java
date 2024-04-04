@@ -141,12 +141,12 @@ public class UserInterface {
                         "7.Delete movie from collection\n");
                 inputKey = input.nextInt();
 
-                switch(inputKey) {
+                switch (inputKey) {
                     case 1 -> {
                         changeTitle();
                     }
                     case 2 -> {
-                        //changeDirector(filmIndex);
+                        changeDirector();
                     }
                     case 3 -> {
                         //changeGenre(filmIndex);
@@ -173,9 +173,6 @@ public class UserInterface {
     }
 
 
-
-
-
     public void findFilmMedNyArray() {
         System.out.println("Which movie are you looking for?");
         int count = 1;
@@ -196,22 +193,34 @@ public class UserInterface {
         String inputNewTitle = input.next();
         samling1.setTitle(filmIndexNo, inputNewTitle);
         String result = samling1.setTitle(filmIndexNo, inputNewTitle);
-        if(result.equals("titleChanged")) {
-            System.out.println("You have now succesfully changed the information on the movie to: ");
+        if (result.equals("titleChanged")) {
+            System.out.println("You have now succesfully changed the information on the title to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         } else {
-            System.out.println("Sorry some information where incorrect!");
+            System.out.println("Sorry, some information were incorrect!");
         }
-
     }
 
-    public void deleteMovie(){
+    public void changeDirector() {
+        System.out.println("What do you want to change the director to?");
+        String inputNewDirector = input.next();
+        samling1.setDirector(filmIndexNo, inputNewDirector);
+        String result = samling1.setDirector(filmIndexNo, inputNewDirector);
+        if (result.equals("directorChanged")) {
+            System.out.println("You have now succesfully changed the information on the director to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry, some information were incorrect!");
+        }
+    }
+
+    public void deleteMovie() {
         System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         System.out.println("Are you sure you want to delete this movie from the collection, yes/no?");
         String answer = input.next();
         if (answer.toLowerCase().equals("yes")) {
             samling1.deleteMovie();
-    } else {
+        } else {
             System.out.println("Okay then lets move on");
         }
     }
