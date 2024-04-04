@@ -59,16 +59,16 @@ public class UserInterface {
                 "Type 1, if you want to add a movie.\n" +
                 "Type 2, if you want to search for a title.\n" +
                 "Type 3, if you want to edit or delete a movie in the collection.\n" +
-                "Type 4, if you wat to see the full movie collection.\n" +
+                "Type 4, if you want to see the full movie collection.\n" +
                 "Type 5, if you want to exit the program.");
         inputKey = input.nextInt();
-        //input.nextLine();
+
 
     }
 
     public void opretFilm() {
         System.out.println("Type the title of the movie you want to add:");
-        String title = input.next();// skal bruge nextLine når der kan være flere ord ellers er next ok
+        String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
 
         System.out.println("Type the director of the movie:");
         String director = input.next();
@@ -127,7 +127,7 @@ public class UserInterface {
         if (result.equals("noMovie")) {
             System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
         } else {
-            System.out.println("We have this movie in the collection: " + samling1.findTitleMedToString(inputTitle));
+            System.out.println("We have this movie in the collection: \n" + samling1.findTitleMedToString(inputTitle));
             System.out.println("Is it the correct movie, which you want to edit? yes/no");
             String answer = input.next();
             if (answer.toLowerCase().equals("yes")) {
@@ -149,16 +149,16 @@ public class UserInterface {
                         changeDirector();
                     }
                     case 3 -> {
-                        //changeGenre(filmIndex);
+                        changeGenre();
                     }
                     case 4 -> {
-                        //changeYear(filmIndex);
+                        changeYear();
                     }
                     case 5 -> {
-                        //changeColor(filmIndex);
+                        changeColor();
                     }
                     case 6 -> {
-                        //changeDuration(filmIndex);
+                        changeDuration();
                     }
                     case 7 -> {
                         deleteMovie();
@@ -174,6 +174,7 @@ public class UserInterface {
 
 
     public void findFilmMedNyArray() {
+        samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne sørger for at listen er tom ved start på søgning
         System.out.println("Which movie are you looking for?");
         int count = 1;
         String inputTitle = input.next();
@@ -182,16 +183,14 @@ public class UserInterface {
                 System.out.println("\n We have this movie in the collection: ");
                 System.out.print(count + ". " + movie);
                 count++;
-            } else {
-                System.out.println("I am sorry we do not have this movie in the collection.");
             }
-        }
+        } System.out.println("I am sorry we do not have this movie in the collection.");
     }
 
     public void changeTitle() {
         System.out.println("What do you want to change the title to?");
         String inputNewTitle = input.next();
-        samling1.setTitle(filmIndexNo, inputNewTitle);
+        //samling1.setTitle(filmIndexNo, inputNewTitle);
         String result = samling1.setTitle(filmIndexNo, inputNewTitle);
         if (result.equals("titleChanged")) {
             System.out.println("You have now succesfully changed the information on the title to: ");
@@ -222,6 +221,61 @@ public class UserInterface {
             samling1.deleteMovie();
         } else {
             System.out.println("Okay then lets move on");
+        }
+    }
+    public void changeYear() {
+        System.out.println("What do you want to change the year of premiere to?");
+        int inputNewYear = input.nextInt();
+        //samling1.setYear(filmIndexNo, inputNewYear);
+        String result = samling1.setYear(filmIndexNo, inputNewYear);
+        if(result.equals("yearChanged")) {
+            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry some information where incorrect!");
+        }
+
+    }
+    public void changeGenre() {
+        System.out.println("What do you want to change the genre to?");
+        String inputNewGenre = input.next();
+        samling1.setGenre(filmIndexNo, inputNewGenre);
+        String result = samling1.setGenre(filmIndexNo, inputNewGenre);
+        if(result.equals("genreChanged")) {
+            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        } else {
+            System.out.println("Sorry some information where incorrect!");
+        }
+    }
+    public void changeDuration() {
+        System.out.println("What would you like to change the duration to?");
+        int newDuration = input.nextInt();
+        samling1.setDuration(filmIndexNo, newDuration);
+        String result = samling1.setDuration(filmIndexNo, newDuration);
+        if(result.equals("durationChanged")) {
+            System.out.println("You have now succesfully changed the duration of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }
+    }
+
+    public void changeColor() {
+        System.out.println("Is this movie in color? Type yes/no.");
+        String colorInput = input.next().toLowerCase();
+
+        if(colorInput.equals("yes")) {
+            boolean newColor = true;
+            samling1.setIsInColor(filmIndexNo,newColor);
+            System.out.println("You have succesfully changed the color aspect of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }else if(colorInput.equals("no")) {
+            boolean newColor = false;
+            samling1.setIsInColor(filmIndexNo,newColor);
+            System.out.println("You have succesfully changed the color aspect of the movie to: ");
+            System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+        }
+        else {
+            System.out.println("No changes were made.");
         }
     }
 }

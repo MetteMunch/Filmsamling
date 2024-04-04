@@ -28,7 +28,7 @@ public class MovieCollection {
 
     public String setTitle(int indexToBeChanged, String newTitle) {
         String result = "noChange";
-        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setTitle(newTitle);
             result = "titleChanged";
@@ -47,14 +47,44 @@ public class MovieCollection {
         return result;
     }
 
-    /*public void editMovie(int movieToBeChanged) {
-        int movieToBeChanged;
-        movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
-        System.out.println("Du har ændret informationer på filmen: " + title);
-        System.out.println("");
+    public String setYear(int indexToBeChanged, int newYear) {
+        String result = "noChange";
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setYearCreated(newYear);
+            result = "yearChanged";
+        }
+        return result;
 
+    }
+    public String setDuration(int indexToBeChanged, int newDuration) {
+        String result = "noChange";
+        if(indexToBeChanged>=0 && indexToBeChanged < movieListe.size()) {
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setLengthInMinutes(newDuration);
+            result = "durationChanged";
+        }
+        return result;
+    }
 
-    }*/
+    public String setGenre(int indexToBeChanged, String newGenre) {
+        String result = "noChange";
+        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setGenre(newGenre);
+            result = "genreChanged";
+        }
+        return result;
+    }
+    public String setIsInColor(int indexToBeChanged, boolean isInColor) {
+        String result = "noChange";
+        if(indexToBeChanged >=0 && indexToBeChanged < movieListe.size()) {
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setIsInColor(isInColor);
+            result = "colorChanged";
+        }
+        return result;
+    }
 
     public void printFullListe() {
         for (Movie film : movieListe) {
@@ -67,7 +97,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result = " "+ films + " FilmNo. " +indexToBeChanged;
+                result = "" + films + " FilmNo. " + indexToBeChanged;
                 break;
             }
         }
@@ -86,7 +116,6 @@ public class MovieCollection {
         }
         return searchMatch;
     }
-
 
     public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" Movie
         return movieListe;

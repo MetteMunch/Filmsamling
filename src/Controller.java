@@ -13,7 +13,7 @@ public class Controller {
         instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
-    public String addMovie2 (String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public String addMovie2(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         return instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
@@ -33,7 +33,7 @@ public class Controller {
         return instanceMovieCollection.searchMovieMedToString(title);
     }
 
-    public void deleteMovie(){
+    public void deleteMovie() {
         getInstanceMovieCollection().deleteMovie();
     }
 
@@ -41,10 +41,26 @@ public class Controller {
         return instanceMovieCollection.getIndexToBeChanged();
     }
 
-    public String setTitle (int indexToBeChanged, String newTitle){
+    public String setTitle(int indexToBeChanged, String newTitle) {
         return instanceMovieCollection.setTitle(indexToBeChanged, newTitle);
     }
     public String setDirector (int indexToBeChanged, String newDirector) {
         return instanceMovieCollection.setDirector(indexToBeChanged, newDirector);
+    }
+
+    public String setYear(int indexToBeChanged, int newYear) {
+        return instanceMovieCollection.setYear(indexToBeChanged, newYear);
+    }
+
+
+    public String setGenre (int indexToBeChanged, String newGenre) {
+        return instanceMovieCollection.setGenre(indexToBeChanged, newGenre);
+    }
+
+    public String setDuration(int indexToBeChanged, int newDuration) {
+        return instanceMovieCollection.setDuration(indexToBeChanged, newDuration);
+    }
+    public String setIsInColor(int indexToBeChanged, boolean isInColor) {
+        return instanceMovieCollection.setIsInColor(indexToBeChanged,isInColor);
     }
 }
