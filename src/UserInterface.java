@@ -33,7 +33,7 @@ public class UserInterface {
 
 
             } else if (inputKey == 2) {  //denne søger efter en specifik titel
-                findFilmMedNyArray();
+                movieSearchWithNewArray();
 
 
             } else if (inputKey == 1) {
@@ -173,7 +173,7 @@ public class UserInterface {
     }
 
 
-    public void findFilmMedNyArray() {
+    public void movieSearchWithNewArray() {
         samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne sørger for at listen er tom ved start på søgning
         System.out.println("Which movie are you looking for?");
         int count = 1;
@@ -184,13 +184,13 @@ public class UserInterface {
                 System.out.print(count + ". " + movie);
                 count++;
             }
-        } System.out.println("I am sorry we do not have this movie in the collection.");
+        }
+        System.out.println("I am sorry we do not have this movie in the collection.");
     }
 
     public void changeTitle() {
         System.out.println("What do you want to change the title to?");
         String inputNewTitle = input.next();
-        //samling1.setTitle(filmIndexNo, inputNewTitle);
         String result = samling1.setTitle(filmIndexNo, inputNewTitle);
         if (result.equals("titleChanged")) {
             System.out.println("You have now succesfully changed the information on the title to: ");
@@ -203,7 +203,7 @@ public class UserInterface {
     public void changeDirector() {
         System.out.println("What do you want to change the director to?");
         String inputNewDirector = input.next();
-        samling1.setDirector(filmIndexNo, inputNewDirector);
+        //samling1.setDirector(filmIndexNo, inputNewDirector);
         String result = samling1.setDirector(filmIndexNo, inputNewDirector);
         if (result.equals("directorChanged")) {
             System.out.println("You have now succesfully changed the information on the director to: ");
@@ -223,37 +223,35 @@ public class UserInterface {
             System.out.println("Okay then lets move on");
         }
     }
+
     public void changeYear() {
         System.out.println("What do you want to change the year of premiere to?");
         int inputNewYear = input.nextInt();
-        //samling1.setYear(filmIndexNo, inputNewYear);
         String result = samling1.setYear(filmIndexNo, inputNewYear);
-        if(result.equals("yearChanged")) {
+        if (result.equals("yearChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         } else {
-            System.out.println("Sorry some information where incorrect!");
+            System.out.println("Sorry some information were incorrect!");
         }
 
     }
+
     public void changeGenre() {
         System.out.println("What do you want to change the genre to?");
         String inputNewGenre = input.next();
-        samling1.setGenre(filmIndexNo, inputNewGenre);
         String result = samling1.setGenre(filmIndexNo, inputNewGenre);
-        if(result.equals("genreChanged")) {
+        if (result.equals("genreChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
-        } else {
-            System.out.println("Sorry some information where incorrect!");
         }
     }
+
     public void changeDuration() {
         System.out.println("What would you like to change the duration to?");
         int newDuration = input.nextInt();
-        samling1.setDuration(filmIndexNo, newDuration);
         String result = samling1.setDuration(filmIndexNo, newDuration);
-        if(result.equals("durationChanged")) {
+        if (result.equals("durationChanged")) {
             System.out.println("You have now succesfully changed the duration of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         }
@@ -263,18 +261,17 @@ public class UserInterface {
         System.out.println("Is this movie in color? Type yes/no.");
         String colorInput = input.next().toLowerCase();
 
-        if(colorInput.equals("yes")) {
+        if (colorInput.equals("yes")) {
             boolean newColor = true;
-            samling1.setIsInColor(filmIndexNo,newColor);
+            samling1.setIsInColor(filmIndexNo, newColor);
             System.out.println("You have succesfully changed the color aspect of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
-        }else if(colorInput.equals("no")) {
+        } else if (colorInput.equals("no")) {
             boolean newColor = false;
-            samling1.setIsInColor(filmIndexNo,newColor);
+            samling1.setIsInColor(filmIndexNo, newColor);
             System.out.println("You have succesfully changed the color aspect of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
-        }
-        else {
+        } else {
             System.out.println("No changes were made.");
         }
     }
