@@ -49,4 +49,15 @@ public class Controller {
         return instanceMovieCollection.setYear(indexToBeChanged, newYear);
     }
 
+
+    public String setGenre (int indexToBeChanged, String newGenre) {
+        return instanceMovieCollection.setGenre(indexToBeChanged, newGenre);
+    }
+
+    public String setDuration(int indexToBeChanged, int newDuration) {
+        return instanceMovieCollection.setDuration(indexToBeChanged, newDuration);
+    }
+    public String setIsInColor(int indexToBeChanged, boolean isInColor) {
+        return instanceMovieCollection.setIsInColor(indexToBeChanged,isInColor);
+    }
 }
