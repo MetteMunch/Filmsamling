@@ -1,8 +1,14 @@
+package ui;
+
+import domain_model.Movie;
+import domain_model.MovieCollection;
+import domain_model.Controller;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
-    //create instance of Controller class
+    //create instance of domain_model.Controller class
     Controller samling1 = new Controller();
     Scanner input;
 

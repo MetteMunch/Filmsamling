@@ -1,3 +1,7 @@
+package domain_model;
+
+import domain_model.Movie;
+
 import java.util.ArrayList;
 
 public class MovieCollection {
@@ -39,7 +43,7 @@ public class MovieCollection {
 
     public String setDirector(int indexToBeChanged, String newDirector) {
         String result = "noChange";
-        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie direcetorToBeChanged = movieListe.get(indexToBeChanged);
             direcetorToBeChanged.setDirector(newDirector);
             result = "directorChanged";
@@ -57,9 +61,10 @@ public class MovieCollection {
         return result;
 
     }
+
     public String setDuration(int indexToBeChanged, int newDuration) {
         String result = "noChange";
-        if(indexToBeChanged>=0 && indexToBeChanged < movieListe.size()) {
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setLengthInMinutes(newDuration);
             result = "durationChanged";
@@ -69,16 +74,17 @@ public class MovieCollection {
 
     public String setGenre(int indexToBeChanged, String newGenre) {
         String result = "noChange";
-        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setGenre(newGenre);
             result = "genreChanged";
         }
         return result;
     }
+
     public String setIsInColor(int indexToBeChanged, boolean isInColor) {
         String result = "noChange";
-        if(indexToBeChanged >=0 && indexToBeChanged < movieListe.size()) {
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setIsInColor(isInColor);
             result = "colorChanged";
@@ -110,18 +116,18 @@ public class MovieCollection {
                 searchMatch.add(films);
                 //indexToBeChanged = searchMatch.indexOf(films);
                 /*int indexOfMovie= searchMatch.indexOf(films);
-                Movie target= searchMatch.get(0);
+                domain_model.Movie target= searchMatch.get(0);
                 target.number =*/
             }
         }
         return searchMatch;
     }
 
-    public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" Movie
+    public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" domain_model.Movie
         return movieListe;
     }
 
-    public ArrayList<Movie> getSearchMatch() {//getter for at kunne kalde searchMatch af typen Movie.
+    public ArrayList<Movie> getSearchMatch() {//getter for at kunne kalde searchMatch af typen domain_model.Movie.
         return searchMatch;
     }
 

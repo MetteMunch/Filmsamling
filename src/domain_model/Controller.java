@@ -1,8 +1,10 @@
+package domain_model;
+
 import java.util.ArrayList;
 
 public class Controller {
 
-    //oprettelse af instance af MovieCollection
+    //oprettelse af instance af domain_model.MovieCollection
     private MovieCollection instanceMovieCollection = new MovieCollection();
 
     //constructor
@@ -18,7 +20,7 @@ public class Controller {
     }
 
     public MovieCollection getInstanceMovieCollection() {
-        return instanceMovieCollection;//getter til instanceMovieCollection og typen er MovieCollection
+        return instanceMovieCollection;//getter til instanceMovieCollection og typen er domain_model.MovieCollection
     }
 
     public void findAllMovies() {
@@ -44,7 +46,8 @@ public class Controller {
     public String setTitle(int indexToBeChanged, String newTitle) {
         return instanceMovieCollection.setTitle(indexToBeChanged, newTitle);
     }
-    public String setDirector (int indexToBeChanged, String newDirector) {
+
+    public String setDirector(int indexToBeChanged, String newDirector) {
         return instanceMovieCollection.setDirector(indexToBeChanged, newDirector);
     }
 
@@ -53,14 +56,15 @@ public class Controller {
     }
 
 
-    public String setGenre (int indexToBeChanged, String newGenre) {
+    public String setGenre(int indexToBeChanged, String newGenre) {
         return instanceMovieCollection.setGenre(indexToBeChanged, newGenre);
     }
 
     public String setDuration(int indexToBeChanged, int newDuration) {
         return instanceMovieCollection.setDuration(indexToBeChanged, newDuration);
     }
+
     public String setIsInColor(int indexToBeChanged, boolean isInColor) {
-        return instanceMovieCollection.setIsInColor(indexToBeChanged,isInColor);
+        return instanceMovieCollection.setIsInColor(indexToBeChanged, isInColor);
     }
 }
