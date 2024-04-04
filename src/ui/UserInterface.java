@@ -1,7 +1,6 @@
 package ui;
 
 import domain_model.Movie;
-import domain_model.MovieCollection;
 import domain_model.Controller;
 
 import java.util.InputMismatchException;
@@ -209,7 +208,6 @@ public class UserInterface {
     public void changeDirector() {
         System.out.println("What do you want to change the director to?");
         String inputNewDirector = input.next();
-        //samling1.setDirector(filmIndexNo, inputNewDirector);
         String result = samling1.setDirector(filmIndexNo, inputNewDirector);
         if (result.equals("directorChanged")) {
             System.out.println("You have now succesfully changed the information on the director to: ");
@@ -232,7 +230,7 @@ public class UserInterface {
 
     public void changeYear() {
         System.out.println("What do you want to change the year of premiere to?");
-        int inputNewYear = input.nextInt();
+        int inputNewYear = ScanIntSafely();
         String result = samling1.setYear(filmIndexNo, inputNewYear);
         if (result.equals("yearChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
@@ -255,7 +253,7 @@ public class UserInterface {
 
     public void changeDuration() {
         System.out.println("What would you like to change the duration to?");
-        int newDuration = input.nextInt();
+        int newDuration = ScanIntSafely();
         String result = samling1.setDuration(filmIndexNo, newDuration);
         if (result.equals("durationChanged")) {
             System.out.println("You have now succesfully changed the duration of the movie to: ");
@@ -279,6 +277,16 @@ public class UserInterface {
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
         } else {
             System.out.println("No changes were made.");
+        }
+    }
+
+    int ScanIntSafely() { //Metode til at fange hvis man skriver et bogstav i en int scanner, der ellers vil melde en fejl
+        try {
+            return input.nextInt(); // Her tester den om der bliver tastet en int ind i scanneren
+        } catch (InputMismatchException ime) {
+            input.nextLine(); // Scanneren skal lige forstå, at den nu skal være klar til at læse på en ny linje
+            System.out.println("You didn't type in a number - please try again:");
+            return ScanIntSafely(); // Rekursion: Metoden kalder sig selv, og starter dermed forfra med et nyt try!
         }
     }
 }
