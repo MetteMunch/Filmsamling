@@ -59,16 +59,16 @@ public class UserInterface {
                 "Type 1, if you want to add a movie.\n" +
                 "Type 2, if you want to search for a title.\n" +
                 "Type 3, if you want to edit or delete a movie in the collection.\n" +
-                "Type 4, if you wat to see the full movie collection.\n" +
+                "Type 4, if you want to see the full movie collection.\n" +
                 "Type 5, if you want to exit the program.");
         inputKey = input.nextInt();
-        //input.nextLine();
+
 
     }
 
     public void opretFilm() {
         System.out.println("Type the title of the movie you want to add:");
-        String title = input.next();// skal bruge nextLine når der kan være flere ord ellers er next ok
+        String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
 
         System.out.println("Type the director of the movie:");
         String director = input.next();
@@ -127,7 +127,7 @@ public class UserInterface {
         if (result.equals("noMovie")) {
             System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
         } else {
-            System.out.println("We have this movie in the collection: " + samling1.findTitleMedToString(inputTitle));
+            System.out.println("We have this movie in the collection: \n" + samling1.findTitleMedToString(inputTitle));
             System.out.println("Is it the correct movie, which you want to edit? yes/no");
             String answer = input.next();
             if (answer.toLowerCase().equals("yes")) {
@@ -177,6 +177,7 @@ public class UserInterface {
 
 
     public void findFilmMedNyArray() {
+        samling1.getInstanceMovieCollection().getSearchMatch().clear();
         System.out.println("Which movie are you looking for?");
         int count = 1;
         String inputTitle = input.next();

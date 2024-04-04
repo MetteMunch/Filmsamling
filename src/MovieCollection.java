@@ -28,7 +28,7 @@ public class MovieCollection {
 
     public String setTitle(int indexToBeChanged, String newTitle) {
         String result = "noChange";
-        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setTitle(newTitle);
             result = "titleChanged";
@@ -36,9 +36,10 @@ public class MovieCollection {
         return result;
 
     }
+
     public String setYear(int indexToBeChanged, int newYear) {
         String result = "noChange";
-        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
             Movie movieToBeChanged = movieListe.get(indexToBeChanged);
             movieToBeChanged.setYearCreated(newYear);
             result = "yearChanged";
@@ -58,7 +59,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result = " "+ films + " FilmNo. " +indexToBeChanged;
+                result = " " + films + " FilmNo. " + indexToBeChanged;
                 break;
             }
         }
@@ -77,7 +78,6 @@ public class MovieCollection {
         }
         return searchMatch;
     }
-
 
     public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" Movie
         return movieListe;

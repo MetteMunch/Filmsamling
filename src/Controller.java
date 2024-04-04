@@ -13,7 +13,7 @@ public class Controller {
         instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
-    public String addMovie2 (String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public String addMovie2(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         return instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
@@ -33,7 +33,7 @@ public class Controller {
         return instanceMovieCollection.searchMovieMedToString(title);
     }
 
-    public void deleteMovie(){
+    public void deleteMovie() {
         getInstanceMovieCollection().deleteMovie();
     }
 
@@ -41,10 +41,11 @@ public class Controller {
         return instanceMovieCollection.getIndexToBeChanged();
     }
 
-    public String setTitle (int indexToBeChanged, String newTitle){
+    public String setTitle(int indexToBeChanged, String newTitle) {
         return instanceMovieCollection.setTitle(indexToBeChanged, newTitle);
     }
-    public String setYear (int indexToBeChanged, int newYear){
+
+    public String setYear(int indexToBeChanged, int newYear) {
         return instanceMovieCollection.setYear(indexToBeChanged, newYear);
     }
 
