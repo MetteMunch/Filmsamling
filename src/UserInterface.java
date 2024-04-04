@@ -177,7 +177,7 @@ public class UserInterface {
 
 
     public void findFilmMedNyArray() {
-        samling1.getInstanceMovieCollection().getSearchMatch().clear();
+        samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne sørger for at listen er tom ved start på søgning
         System.out.println("Which movie are you looking for?");
         int count = 1;
         String inputTitle = input.next();
@@ -186,10 +186,8 @@ public class UserInterface {
                 System.out.println("\n We have this movie in the collection: ");
                 System.out.print(count + ". " + movie);
                 count++;
-            } else {
-                System.out.println("I am sorry we do not have this movie in the collection.");
             }
-        }
+        } System.out.println("I am sorry we do not have this movie in the collection.");
     }
 
     public void changeTitle() {
