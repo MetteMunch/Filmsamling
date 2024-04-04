@@ -56,7 +56,6 @@ public class UserInterface {
             repeatMenu();
         }
         System.out.println("Thank you and see you soon.");
-
     }
 
     public void userCommunication() {//usercase 2 og tilrettet i de følgende
@@ -67,8 +66,6 @@ public class UserInterface {
                 "Type 4, if you want to see the full movie collection.\n" +
                 "Type 5, if you want to exit the program.");
         inputKey = input.nextInt();
-
-
     }
 
     public void opretFilm() {
@@ -81,26 +78,14 @@ public class UserInterface {
         System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");
         String genre = input.next();
 
-        //indarbejdelse af try/catch
-        int yearCreated = 0;
-        boolean exceptionHandling = false;
-        while (!exceptionHandling) {
-            try {
-                System.out.println("Year of premiere: ");
-                yearCreated = input.nextInt();
-                exceptionHandling = true;
-            } catch (InputMismatchException ime) {
-                System.out.println("Sorry you have to type a year, try again.");
-                input.nextLine();
-            }
-        }
-
+        System.out.println("What year is the movie from?");
+        int yearCreated = ScanIntSafely();
 
         System.out.println("Type true if the movie is in color or false if it is black/white.");
         boolean isInColor = input.nextBoolean();
 
         System.out.println("Type the duration of the movie in minutes.");
-        int lengthInMinutes = input.nextInt();
+        int lengthInMinutes = ScanIntSafely();
 
         addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
@@ -132,7 +117,7 @@ public class UserInterface {
         if (result.equals("noMovie")) {
             System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
         } else {
-            System.out.println("We have this movie in the collection: \n" + samling1.findTitleMedToString(inputTitle));
+            System.out.println("We have this movie in the collection: \n" + "" + samling1.findTitleMedToString(inputTitle));
             System.out.println("Is it the correct movie, which you want to edit? yes/no");
             String answer = input.next();
             if (answer.toLowerCase().equals("yes")) {
@@ -280,7 +265,7 @@ public class UserInterface {
         }
     }
 
-    int ScanIntSafely() { //Metode til at fange hvis man skriver et bogstav i en int scanner, der ellers vil melde en fejl
+    private int ScanIntSafely() { //Metode til at fange hvis man skriver et bogstav i en int scanner, der ellers vil melde en fejl
         try {
             return input.nextInt(); // Her tester den om der bliver tastet en int ind i scanneren
         } catch (InputMismatchException ime) {

@@ -25,11 +25,11 @@ public class Movie {
     @Override //en slags stavekontrol  kaldes ved at kalde metoden Movies.toString()
     public String toString() {
         String result = "";
-        result += "Title: " + title + " , Instructor: " + director + " , Genre: " + genre + " , Year: " + yearCreated + " , Duration in min.:" + lengthInMinutes;
+        result += "Title: " + title + "\nInstructor: " + director + "\nGenre: " + genre + "\nYear: " + yearCreated + "\nDuration in min: " + lengthInMinutes;
         if (isInColor) {
-            result += " , Color movie";
+            result += "\nColor movie\n";
         } else {
-            result += " , Black/White";
+            result += "\nBlack/White\n";
         }
         return result;
     }   //dette result vises som udskrift, når metoden kaldes

@@ -103,7 +103,7 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             indexToBeChanged = movieListe.indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result = "" + films + " FilmNo. " + indexToBeChanged;
+                result = "\n" + films + "FilmNo. " + indexToBeChanged + "\n";
                 break;
             }
         }
@@ -114,10 +114,6 @@ public class MovieCollection {
         for (Movie films : movieListe) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
-                //indexToBeChanged = searchMatch.indexOf(films);
-                /*int indexOfMovie= searchMatch.indexOf(films);
-                domain_model.Movie target= searchMatch.get(0);
-                target.number =*/
             }
         }
         return searchMatch;
