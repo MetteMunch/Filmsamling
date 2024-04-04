@@ -34,6 +34,7 @@ public class MovieCollection {
             result = "titleChanged";
         }
         return result;
+
     }
 
     public String setDuration(int indexToBeChanged, int newDuration) {
@@ -46,6 +47,15 @@ public class MovieCollection {
         return result;
     }
 
+    public String setGenre(int indexToBeChanged, String newGenre) {
+        String result = "noChange";
+        if(indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()){
+            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+            movieToBeChanged.setGenre(newGenre);
+            result = "genreChanged";
+        }
+        return result;
+        }
     public String setIsInColor(int indexToBeChanged, boolean isInColor) {
         String result = "noChange";
         if(indexToBeChanged >=0 && indexToBeChanged < movieListe.size()) {
@@ -55,7 +65,6 @@ public class MovieCollection {
         }
         return result;
     }
-
 
     /*public void editMovie(int movieToBeChanged) {
         int movieToBeChanged;
