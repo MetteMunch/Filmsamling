@@ -168,14 +168,18 @@ public class UserInterface {
         System.out.println("Which movie are you looking for?");
         int count = 1;
         String inputTitle = input.next();
-        for (Movie movie : samling1.findTitle(inputTitle)) {
-            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+        samling1.findTitle(inputTitle);
+        if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+            for (Movie movie : samling1.getInstanceMovieCollection().getSearchMatch()) {
                 System.out.println("\n We have this movie in the collection: ");
                 System.out.print(count + ". " + movie);
                 count++;
             }
-        }
-        System.out.println("I am sorry we do not have this movie in the collection.");
+        } else {
+                System.out.println("I am sorry we do not have this movie in the collection.");
+            }
+
+
     }
 
     public void changeTitle() {
