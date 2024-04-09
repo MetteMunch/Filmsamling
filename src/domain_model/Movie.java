@@ -92,6 +92,4 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
-
-
 }
