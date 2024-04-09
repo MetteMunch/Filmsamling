@@ -93,7 +93,7 @@ public class UserInterface {
                 "If you want to edit or delete a title, type 3.\n" +
                 "If you want to see a full list of the movie collection, type 4.\n" +
                 "If you want to exit the program, type 5.");
-        inputKey = input.nextInt();
+       inputKey = input.nextInt();
     }
 
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
@@ -126,7 +126,9 @@ public class UserInterface {
                         "4.Premiere\n" +
                         "5.Color or black/white\n" +
                         "6.Duration in minutes\n" +
-                        "7.Delete movie from collection\n");
+                        "7.Delete movie from collection\n" +
+                        "8.I have changed my mind..take me back to the main menu.\n");
+
                 inputKey = input.nextInt();
 
                 switch (inputKey) {
@@ -151,12 +153,14 @@ public class UserInterface {
                     case 7 -> {
                         deleteMovie();
                     }
+                    case 8 -> {
+                        repeatMenu();
+                    }
                 }
-                samling1.saveListOfMoviesToFile();
+                //samling1.saveListOfMoviesToFile();
 
             } else if (answer.toLowerCase().equals("no")) {
-                System.out.println("Then try to search again with a bit more information");
-                findAndEditMovie();
+                repeatMenu();
             }
         }
     }
@@ -175,8 +179,8 @@ public class UserInterface {
                 count++;
             }
         } else {
-                System.out.println("I am sorry we do not have this movie in the collection.");
-            }
+            System.out.println("I am sorry we do not have this movie in the collection.");
+        }
 
 
     }
@@ -188,6 +192,7 @@ public class UserInterface {
         if (result.equals("titleChanged")) {
             System.out.println("You have now succesfully changed the information on the title to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         } else {
             System.out.println("Sorry, some information were incorrect!");
         }
@@ -200,6 +205,7 @@ public class UserInterface {
         if (result.equals("directorChanged")) {
             System.out.println("You have now succesfully changed the information on the director to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         } else {
             System.out.println("Sorry, some information were incorrect!");
         }
@@ -211,6 +217,7 @@ public class UserInterface {
         String answer = input.next();
         if (answer.toLowerCase().equals("yes")) {
             samling1.deleteMovie();
+            samling1.saveListOfMoviesToFile();
         } else {
             System.out.println("Okay then lets move on");
         }
@@ -223,6 +230,7 @@ public class UserInterface {
         if (result.equals("yearChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         } else {
             System.out.println("Sorry some information were incorrect!");
         }
@@ -236,6 +244,7 @@ public class UserInterface {
         if (result.equals("genreChanged")) {
             System.out.println("You have now succesfully changed the information on the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         }
     }
 
@@ -246,6 +255,7 @@ public class UserInterface {
         if (result.equals("durationChanged")) {
             System.out.println("You have now succesfully changed the duration of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         }
     }
 
@@ -258,11 +268,13 @@ public class UserInterface {
             samling1.setIsInColor(filmIndexNo, newColor);
             System.out.println("You have succesfully changed the color aspect of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         } else if (colorInput.equals("no")) {
             boolean newColor = false;
             samling1.setIsInColor(filmIndexNo, newColor);
             System.out.println("You have succesfully changed the color aspect of the movie to: ");
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
+            samling1.saveListOfMoviesToFile();
         } else {
             System.out.println("No changes were made.");
         }
