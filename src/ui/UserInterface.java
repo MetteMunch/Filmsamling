@@ -124,7 +124,7 @@ public class UserInterface {
         } else if(inputKey == 5) { //Duration
             sortDuration();
         } else if(inputKey == 6) { //Genre
-            //so
+            sortGenre();
         } //Ny else if med repeatMenu()?
     }
     public void sortTitle() {
