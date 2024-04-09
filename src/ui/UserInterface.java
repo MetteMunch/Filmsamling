@@ -96,6 +96,18 @@ public class UserInterface {
         inputKey = input.nextInt();
     }
 
+    ////-------SORTERING-------////
+    public void displaySortMenu() {
+        System.out.println("Select a criteria by which you want your movielist to be sorted.");
+        System.out.println("1. by Title");
+        System.out.println("2. by Director");
+        System.out.println("3. by Premiere Year");
+        System.out.println("4. by Colourised or not");
+        System.out.println("5. by Duration");
+        System.out.println("6. by Genre");
+    }
+
+
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         String result = samling1.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
         if (result.equals("true")) {
