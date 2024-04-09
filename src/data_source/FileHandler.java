@@ -1,4 +1,6 @@
-package domain_model;
+package data_source;
+
+import domain_model.Movie;
 
 import java.io.*;
 import java.util.ArrayList;

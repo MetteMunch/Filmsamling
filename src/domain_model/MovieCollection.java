@@ -1,6 +1,6 @@
 package domain_model;
 
-import domain_model.Movie;
+import data_source.FileHandler;
 
 import java.util.ArrayList;
 
