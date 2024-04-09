@@ -24,10 +24,6 @@ public class UserInterface {
     }
 
     public void startProgram() {
-        //Jeg tilføjer lige nogle titler, så jeg har lidt at lege med...
-        samling1.addMovie2("Burn After Reading", "Coen", 2008, true, 120, "Komedie");
-        samling1.addMovie2("Godfather", "Coppola", 1972, true, 175, "Thriller");
-        samling1.addMovie2("La vita e bella", "Benigni", 1997, true, 120, "Drama");
 
         userCommunication();//Her kalder jeg metoden, hvor user oplyses om valgmuligheder
 
@@ -154,6 +150,7 @@ public class UserInterface {
                         deleteMovie();
                     }
                 }
+                samling1.saveListOfMoviesToFile();
 
             } else if (answer.toLowerCase().equals("no")) {
                 System.out.println("Then try to search again with a bit more information");

@@ -67,4 +67,7 @@ public class Controller {
     public String setIsInColor(int indexToBeChanged, boolean isInColor) {
         return instanceMovieCollection.setIsInColor(indexToBeChanged, isInColor);
     }
+    public void saveListOfMoviesToFile() {
+        instanceMovieCollection.getFh().saveListOfMovies();
+    }
 }

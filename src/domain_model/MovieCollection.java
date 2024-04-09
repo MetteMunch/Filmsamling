@@ -6,13 +6,16 @@ import java.util.ArrayList;
 
 public class MovieCollection {
 
-    private ArrayList<Movie> movieListe = new ArrayList<>();
-    private ArrayList<Movie> searchMatch = new ArrayList<>();//ny ArrayList til at gemme søge resultater i
+    //private ArrayList<Movie> movieListe = new ArrayList<>(); Denne er blevet flyttet til FileHandler
+    private ArrayList<Movie> searchMatch;
     private int indexToBeChanged;
+    private FileHandler fh;
 
 
     //constructor
     public MovieCollection() {
+        searchMatch = new ArrayList<>();//ny ArrayList til at gemme søge resultater i
+        fh = new FileHandler();
     }
 
 
@@ -20,20 +23,20 @@ public class MovieCollection {
 
     //usercase 1 - opret film
     public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        movieListe.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
+        fh.getMovieListe().add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
         String result = "true";
         return result;
     }
 
     //metoder til editing og delete
     public void deleteMovie() {
-        movieListe.remove(indexToBeChanged);
+        fh.getMovieListe().remove(indexToBeChanged);
     }
 
     public String setTitle(int indexToBeChanged, String newTitle) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             movieToBeChanged.setTitle(newTitle);
             result = "titleChanged";
         }
@@ -43,8 +46,8 @@ public class MovieCollection {
 
     public String setDirector(int indexToBeChanged, String newDirector) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie direcetorToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie direcetorToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             direcetorToBeChanged.setDirector(newDirector);
             result = "directorChanged";
         }
@@ -53,8 +56,8 @@ public class MovieCollection {
 
     public String setYear(int indexToBeChanged, int newYear) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             movieToBeChanged.setYearCreated(newYear);
             result = "yearChanged";
         }
@@ -64,8 +67,8 @@ public class MovieCollection {
 
     public String setDuration(int indexToBeChanged, int newDuration) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             movieToBeChanged.setLengthInMinutes(newDuration);
             result = "durationChanged";
         }
@@ -74,8 +77,8 @@ public class MovieCollection {
 
     public String setGenre(int indexToBeChanged, String newGenre) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             movieToBeChanged.setGenre(newGenre);
             result = "genreChanged";
         }
@@ -84,8 +87,8 @@ public class MovieCollection {
 
     public String setIsInColor(int indexToBeChanged, boolean isInColor) {
         String result = "noChange";
-        if (indexToBeChanged >= 0 && indexToBeChanged < movieListe.size()) {
-            Movie movieToBeChanged = movieListe.get(indexToBeChanged);
+        if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
+            Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);
             movieToBeChanged.setIsInColor(isInColor);
             result = "colorChanged";
         }
@@ -93,15 +96,15 @@ public class MovieCollection {
     }
 
     public void printFullListe() {
-        for (Movie film : movieListe) {
+        for (Movie film : fh.getMovieListe()) {
             System.out.println(film.toString());
         }
     }
 
     public String searchMovieMedToString(String title) { //user case 5
         String result = "noMovie";
-        for (Movie films : movieListe) {
-            indexToBeChanged = movieListe.indexOf(films);
+        for (Movie films : fh.getMovieListe()) {
+            indexToBeChanged = fh.getMovieListe().indexOf(films);
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 result = "\n" + films + "FilmNo. " + indexToBeChanged + "\n";
                 break;
@@ -111,7 +114,7 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> searchMovie(String title) {
-        for (Movie films : movieListe) {
+        for (Movie films : fh.getMovieListe()) {
             if (films.getTitle().toLowerCase().contains(title.toLowerCase())) {
                 searchMatch.add(films);
             }
@@ -120,7 +123,7 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> getMovieListe() { //getter for at få MovieListe af "typen" domain_model.Movie
-        return movieListe;
+        return fh.getMovieListe();
     }
 
     public ArrayList<Movie> getSearchMatch() {//getter for at kunne kalde searchMatch af typen domain_model.Movie.
@@ -129,5 +132,9 @@ public class MovieCollection {
 
     public int getIndexToBeChanged() {
         return indexToBeChanged;
+    }
+
+    public FileHandler getFh() {
+        return fh;
     }
 }
