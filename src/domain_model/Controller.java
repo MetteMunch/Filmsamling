@@ -11,11 +11,7 @@ public class Controller {
     public Controller() {
     }
 
-    public void addMovie1(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
-    }
-
-    public String addMovie2(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         return instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 

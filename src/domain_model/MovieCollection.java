@@ -97,7 +97,7 @@ public class MovieCollection {
 
     public void printFullListe() {
         for (Movie film : fh.getMovieListe()) {
-            System.out.println(film.toString());
+            System.out.println(film.toString2());
         }
     }
 

@@ -32,7 +32,18 @@ public class Movie {
             result += "\nBlack/White\n";
         }
         return result;
-    }   //dette result vises som udskrift, når metoden kaldes
+    }   //dette result vises som udskrift, når search metode kaldes
+
+    public String toString2() {
+        String result = "";
+        result += "Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        return result;
+    }   //dette result vises som udskrift, når samlet liste skal vises (en film på hver linje)
 
     public void setTitle(String newTitle) {
         this.title = newTitle;
