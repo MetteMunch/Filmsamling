@@ -11,7 +11,7 @@ public class UserInterface {
     Controller samling1 = new Controller();
     Scanner input;
 
-    int SENTINEL = 5;
+    int SENTINEL = 6;
     int inputKey = 0;
     int filmIndexNo = 9;
 
@@ -45,10 +45,7 @@ public class UserInterface {
                 findAndEditMovie();
 
 
-            } else if (inputKey == 6) {
-                userCommunication();
-
-            } else if(inputKey == 7) {
+            } else if (inputKey == 5) {
                 sortMenu();
             }
             repeatMenu();
@@ -61,8 +58,9 @@ public class UserInterface {
                 "Type 1, if you want to add a movie.\n" +
                 "Type 2, if you want to search for a title.\n" +
                 "Type 3, if you want to edit or delete a movie in the collection.\n" +
-                "Type 4, if you want to see the full movie collection.\n" +"Type 7 if you want to see the sorting menu.\n"+
-                "Type 5, if you want to exit the program.");
+                "Type 4, if you want to see the full movie collection.\n" +
+                "Type 5, if you want to see the sorting menu.\n" +
+                "Type 6, if you want to exit the program.");
         inputKey = input.nextInt();
     }
 
@@ -94,8 +92,9 @@ public class UserInterface {
                 "If you want to search for a title, type 2.\n" +
                 "If you want to edit or delete a title, type 3.\n" +
                 "If you want to see a full list of the movie collection, type 4.\n" +
-                "If you want to exit the program, type 5.");
-       inputKey = input.nextInt();
+                "If you want to see the sorting menu, type 5.\n" +
+                "If you want to exit the program, type 6.");
+        inputKey = input.nextInt();
     }
 
     ////-------SORTERING-------////
@@ -119,47 +118,52 @@ public class UserInterface {
             sortDirector();
         } else if (inputKey == 3) {//Premiere Year
             sortYearCreated();
-        } else if(inputKey == 4) { //Colourised
+        } else if (inputKey == 4) { //Colourised
             sortColorised();
-        } else if(inputKey == 5) { //Duration
+        } else if (inputKey == 5) { //Duration
             sortDuration();
-        } else if(inputKey == 6) { //Genre
+        } else if (inputKey == 6) { //Genre
             sortGenre();
         } //Ny else if med repeatMenu()?
     }
+
     public void sortTitle() {
         //Kalder sortering på liste via comparator
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new titleComparator());
 
         System.out.println("You have successfully sorted your list by title. Navigate to your list to see the changes.");
     }
+
     public void sortDirector() {
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new directorComparator());
 
         System.out.println("You have successfully sorted your list by director. Navigate to your list to see the changes.");
     }
+
     public void sortYearCreated() {
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new yearComparator());
 
         System.out.println("You have successfully sorted your list by premiere year. Navigate to your list to see the changes.");
     }
+
     public void sortColorised() {
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new colorComparator());
 
         System.out.println("You have successfully sorted your list by whether or not the movie is colorised. " +
                 "Navigate to your list to see the changes.");
     }
+
     public void sortDuration() {
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new durationComparator());
 
         System.out.println("You have successfully sorted your list by duration. Navigate to your list to see the changes.");
     }
+
     public void sortGenre() {
         Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new genreComparator());
 
         System.out.println("You have successfully sorted your list by genre. Navigate to your list to see the changes.");
     }
-
 
 
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
