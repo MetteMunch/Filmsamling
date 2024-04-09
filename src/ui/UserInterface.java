@@ -184,11 +184,14 @@ public class UserInterface {
         //System.out.println("Dette er filmIndexNo: " +filmIndexNo + " Dette er filmtitel: " +result);
         if (result.equals("noMovie")) {
             System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
-        } else {
-            System.out.println("We have this movie in the collection: \n" + "" + samling1.findTitleMedToString(inputTitle));
+            return;
+        }
+        System.out.println("We have this movie in the collection: \n" + "" + samling1.findTitleMedToString(inputTitle));
+        while (true) {
             System.out.println("Is it the correct movie, which you want to edit? yes/no");
-            String answer = input.next();
-            if (answer.toLowerCase().equals("yes")) {
+            String answer = input.next().toLowerCase();
+
+            if (answer.equals("yes")) {
                 System.out.println("What would you like to change? Type number.\n" +
                         "1.Title\n" +
                         "2.Director\n" +
@@ -227,10 +230,20 @@ public class UserInterface {
                         repeatMenu();
                     }
                 }
-                //samling1.saveListOfMoviesToFile();
+                break;
 
-            } else if (answer.toLowerCase().equals("no")) {
-                repeatMenu();
+            } else if (answer.equals("no")) {
+                System.out.println("Which movie do you want to edit then?");
+                inputTitle = input.next();
+                result = samling1.findTitleMedToString(inputTitle);
+                filmIndexNo = samling1.getIndexToBeChanged();
+                if (result.equals("noMovie")) {
+                    System.out.println("Sorry it seems like we do not have a movie with that title in the collection.");
+                    return;
+                }
+                System.out.println("We have this movie in the collection: \n" + samling1.findTitleMedToString(inputTitle));
+            } else {
+                System.out.println("Invalid input. Please enter 'yes' or 'no'.");
             }
         }
     }
