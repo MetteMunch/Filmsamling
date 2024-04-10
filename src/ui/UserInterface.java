@@ -256,9 +256,9 @@ public class UserInterface {
         String inputTitle = input.next();
         samling1.findTitle(inputTitle);
         if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+            System.out.println("A search in the collection gave this result: ");
             for (Movie movie : samling1.getInstanceMovieCollection().getSearchMatch()) {
-                System.out.println("\n We have this movie in the collection: ");
-                System.out.print(count + ". " + movie);
+                System.out.print(count + ". " + movie.toString2() + "\n");
                 count++;
             }
         } else {
