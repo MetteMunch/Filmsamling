@@ -44,6 +44,59 @@ public class Movie {
         }
         return result;
     }   //dette result vises som udskrift, når samlet liste skal vises (en film på hver linje)
+    public String toStringDirector() {
+        String result = "";
+        result += "Instructor: " + director + ", Title: " + title + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        return result;
+    }   //dette result skal vises når der sorteres på instructor
+
+    public String toStringGenre() {
+        String result = "";
+        result += "Genre: " + genre +", Title: " + title + ", Instructor: " + director +  ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        return result;
+    }   //dette result skal vises når der sorteres på genre
+
+    public String toStringIsInColor() {
+        String result = "";
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        result += ", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
+        return result;
+    }   //dette result skal vises når der sorteres på farve/sh
+
+    public String toStringYear() {
+        String result = "";
+        result += "Year: " + +yearCreated +", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Duration in min: " + lengthInMinutes;
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        return result;
+    }   //dette result vises som udskrift, når der sorteres på year
+    public String toStringDuration() {
+        String result = "";
+        result += "Duration in min: " + lengthInMinutes + ", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated;
+        if (isInColor) {
+            result += ", Color movie";
+        } else {
+            result += ", Black/White";
+        }
+        return result;
+    }   //dette result vises som udskrift, når der sorteres på duration
 
     public void setTitle(String newTitle) {
         this.title = newTitle;

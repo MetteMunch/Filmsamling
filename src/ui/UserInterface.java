@@ -53,6 +53,8 @@ public class UserInterface {
         System.out.println("Thank you and see you soon.");
     }
 
+    ////-------MENUES-------////
+
     public void userCommunication() {//usercase 2 og tilrettet i de følgende
         System.out.println("Welcome to the movie collection!\n" +
                 "Type 1, if you want to add a movie.\n" +
@@ -63,6 +65,18 @@ public class UserInterface {
                 "Type 6, if you want to exit the program.");
         inputKey = input.nextInt();
     }
+
+    public void repeatMenu() {
+        System.out.println("\nIf you want to add another movie, type 1.\n" +
+                "If you want to search for a title, type 2.\n" +
+                "If you want to edit or delete a title, type 3.\n" +
+                "If you want to see a full list of the movie collection, type 4.\n" +
+                "If you want to see the sorting menu, type 5.\n" +
+                "If you want to exit the program, type 6.");
+        inputKey = input.nextInt();
+    }
+
+    ////-------ADD, EDIT AND SEARCH-------////
 
     public void opretFilm() {
         System.out.println("Type the title of the movie you want to add:");
@@ -87,85 +101,6 @@ public class UserInterface {
 
     }
 
-    public void repeatMenu() {
-        System.out.println("\nIf you want to add another movie, type 1.\n" +
-                "If you want to search for a title, type 2.\n" +
-                "If you want to edit or delete a title, type 3.\n" +
-                "If you want to see a full list of the movie collection, type 4.\n" +
-                "If you want to see the sorting menu, type 5.\n" +
-                "If you want to exit the program, type 6.");
-        inputKey = input.nextInt();
-    }
-
-    ////-------SORTERING-------////
-    public void displaySortMenu() {
-        System.out.println("Select a criteria by which you want your movielist to be sorted.");
-        System.out.println("1. by Title");
-        System.out.println("2. by Director");
-        System.out.println("3. by Premiere Year");
-        System.out.println("4. by Colourised or not");
-        System.out.println("5. by Duration");
-        System.out.println("6. by Genre");
-    }
-
-    public void sortMenu() {
-        displaySortMenu();
-        inputKey = input.nextInt();
-
-        if (inputKey == 1) { //TITEL
-            sortTitle();
-        } else if (inputKey == 2) { //Director
-            sortDirector();
-        } else if (inputKey == 3) {//Premiere Year
-            sortYearCreated();
-        } else if (inputKey == 4) { //Colourised
-            sortColorised();
-        } else if (inputKey == 5) { //Duration
-            sortDuration();
-        } else if (inputKey == 6) { //Genre
-            sortGenre();
-        } //Ny else if med repeatMenu()?
-    }
-
-    public void sortTitle() {
-        //Kalder sortering på liste via comparator
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new titleComparator());
-
-        System.out.println("You have successfully sorted your list by title. Navigate to your list to see the changes.");
-    }
-
-    public void sortDirector() {
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new directorComparator());
-
-        System.out.println("You have successfully sorted your list by director. Navigate to your list to see the changes.");
-    }
-
-    public void sortYearCreated() {
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new yearComparator());
-
-        System.out.println("You have successfully sorted your list by premiere year. Navigate to your list to see the changes.");
-    }
-
-    public void sortColorised() {
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new colorComparator());
-
-        System.out.println("You have successfully sorted your list by whether or not the movie is colorised. " +
-                "Navigate to your list to see the changes.");
-    }
-
-    public void sortDuration() {
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new durationComparator());
-
-        System.out.println("You have successfully sorted your list by duration. Navigate to your list to see the changes.");
-    }
-
-    public void sortGenre() {
-        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new genreComparator());
-
-        System.out.println("You have successfully sorted your list by genre. Navigate to your list to see the changes.");
-    }
-
-
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         String result = samling1.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
         if (result.equals("true")) {
@@ -174,7 +109,6 @@ public class UserInterface {
             samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
         }
     }
-
     public void findAndEditMovie() {//her vises kun første match
         //user case 5, hvis der skal søges og udskrives med toString
         System.out.println("Which movie do you like to edit?");
@@ -247,8 +181,6 @@ public class UserInterface {
             }
         }
     }
-
-
     public void movieSearchWithNewArray() {
         samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne sørger for at listen er tom ved start på søgning
         System.out.println("Which movie are you looking for?");
@@ -362,6 +294,94 @@ public class UserInterface {
             System.out.println("No changes were made.");
         }
     }
+
+
+
+
+    ////-------SORTERING-------////
+    public void displaySortMenu() {
+        System.out.println("Select a criteria by which you want your movielist to be sorted.");
+        System.out.println("1. by Title");
+        System.out.println("2. by Director");
+        System.out.println("3. by Premiere Year");
+        System.out.println("4. by Colourised or not");
+        System.out.println("5. by Duration");
+        System.out.println("6. by Genre");
+    }
+
+    public void sortMenu() {
+        displaySortMenu();
+        inputKey = input.nextInt();
+
+        if (inputKey == 1) { //TITEL
+            sortTitle();
+        } else if (inputKey == 2) { //Director
+            sortDirector();
+        } else if (inputKey == 3) {//Premiere Year
+            sortYearCreated();
+        } else if (inputKey == 4) { //Colourised
+            sortColorised();
+        } else if (inputKey == 5) { //Duration
+            sortDuration();
+        } else if (inputKey == 6) { //Genre
+            sortGenre();
+        } //Ny else if med repeatMenu()?
+    }
+
+    public void sortTitle() {
+        //Kalder sortering på liste via comparator
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new titleComparator());
+        System.out.println("You have successfully sorted your list by title:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toString2() + "\n");
+        }
+    }
+
+    public void sortDirector() {
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new directorComparator());
+        System.out.println("You have successfully sorted your list by director:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toStringDirector() + "\n");
+        }
+    }
+
+    public void sortYearCreated() {
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new yearComparator());
+        System.out.println("You have successfully sorted your list by premiere year:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toStringYear() + "\n");
+        }
+    }
+
+    public void sortColorised() {
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new colorComparator());
+        System.out.println("You have successfully sorted your list by whether or not the movie is colorised:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toStringIsInColor() + "\n");
+        }
+    }
+
+    public void sortDuration() {
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new durationComparator());
+        System.out.println("You have successfully sorted your list by duration:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toStringDuration() + "\n");
+        }
+    }
+
+    public void sortGenre() {
+        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), new genreComparator());
+        System.out.println("You have successfully sorted your list by genre:");
+        for (Movie movie : samling1.getInstanceMovieCollection().getFh().getMovieListe()) {
+            System.out.print(movie.toStringGenre() + "\n");
+        }
+    }
+
+
+
+
+    ////-------HJÆLPEMETODE-------////
+
 
     private int ScanIntSafely() { //Metode til at fange hvis man skriver et bogstav i en int scanner, der ellers vil melde en fejl
         try {
