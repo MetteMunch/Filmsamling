@@ -3,6 +3,7 @@ package ui;
 import domain_model.*;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -50,6 +51,8 @@ public class UserInterface {
 
             } else if(inputKey == 7) {
                 sortMenu();
+            } else if(inputKey == 8) {
+                sortMultipleCriteria();
             }
             repeatMenu();
         }
@@ -160,6 +163,61 @@ public class UserInterface {
         System.out.println("You have successfully sorted your list by genre. Navigate to your list to see the changes.");
     }
 
+    public void sortMultipleCriteria() {
+        System.out.println("Select the first criteria you wish to sort on.");
+        String firstCriteria = input.next();
+
+        System.out.println("Select the second criteria you wish to sort on.");
+        String secondCriteria = input.next();
+
+        Comparator<Movie> comparator = null;
+        switch (firstCriteria.toLowerCase()) {
+            case "title":
+                comparator = new titleComparator();
+                break;
+            case "director":
+                comparator = new directorComparator();
+                break;
+            case "premiere":
+                comparator = new yearComparator();
+                break;
+            case "color":
+                comparator = new colorComparator();
+                break;
+            case "duration":
+                comparator = new durationComparator();
+                break;
+            case "genre":
+                comparator = new genreComparator();
+                break;
+        }
+
+        switch (secondCriteria.toLowerCase()) {
+            case "title":
+                comparator = comparator.thenComparing(new titleComparator());
+                break;
+            case "director":
+                comparator = comparator.thenComparing(new directorComparator());
+                break;
+            case "premiere":
+                comparator = comparator.thenComparing(new yearComparator());
+                break;
+            case "color":
+                comparator = comparator.thenComparing(new colorComparator());
+                break;
+            case "duration":
+                comparator = comparator.thenComparing(new durationComparator());
+                break;
+            case "genre":
+                comparator = comparator.thenComparing(new genreComparator());
+                break;
+        }
+
+        if (comparator != null) {
+            Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), comparator);
+            System.out.println("You have successfully sorted your list by " + firstCriteria + " and " + secondCriteria + ". Navigate to your list to see the changes.");
+        }
+    }
 
 
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
