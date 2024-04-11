@@ -2,8 +2,8 @@ package domain_model;
 
 // ENUM er en special klasse der repræsenter en gruppe af konstante variabler
 public enum Genre {
-    action ("Action"),
-    Comedy ("Comedy"),
+    ACTION ("Action"),
+    COMEDY ("Comedy"),
     ROMANCE ("Romance"),
     DRAMA ("Drama"),
     HORROR ("Horror"),

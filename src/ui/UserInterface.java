@@ -79,34 +79,68 @@ public class UserInterface {
     ////-------ADD, EDIT AND SEARCH-------////
 
     public void opretFilm() {
-        System.out.println("Type the title of the movie you want to add:");
-        String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
+        samling1.getInstanceMovieCollection().getSearchMatch().clear();
+        boolean cond = true;
+        //boolean titleFlag = false;
 
-        System.out.println("Type the director of the movie:");
-        String director = input.next();
+        while(cond) {
+            System.out.println("Type the title of the movie you want to add:");
+            String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
 
-        Genre genre = null;
-        do {
-            System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
-            String genreStr = input.next().toUpperCase();
-            try {
-                genre = Genre.valueOf(genreStr);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid genre - Please choose from the provided genres");
+            samling1.findTitle(title);
+            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+                int count = 0;
+                System.out.println("\n The following movie(s) were found: ");
+                for (Movie movie : samling1.getInstanceMovieCollection().getSearchMatch()) {
+                    System.out.println(count + ". " + movie);
+                    count++;
+                }
+                System.out.println("You entered a title that returned " + count + " results. Would you like to continue adding your movie? Type yes/no.");
+
+                String choice = input.next().toLowerCase();
+                samling1.getInstanceMovieCollection().getSearchMatch().clear();//Cleare listen for at holde den clean
+
+                if (choice.equals("yes")) {
+                    //titleFlag = true;
+                    cond = false;
+                } else if (choice.equals("no")) {
+                    System.out.println("You chose no and will now return to the menu.");
+                    break;
+                } else {
+                    System.out.println("Please input only yes or no in order to continue.");
+                }
+
             }
-        } while (genre == null);
 
-        System.out.println("What year is the movie from?");
-        int yearCreated = ScanIntSafely();
+            System.out.println("Type the director of the movie:");
+            String director = input.next();
 
-        System.out.println("Is the movie in color? Type yes or no.");
-        String color = input.next();
-        boolean isInColor = color.equals("yes");
+            Genre genre = null;
 
-        System.out.println("Type the duration of the movie in minutes.");
-        int lengthInMinutes = ScanIntSafely();
+            do {
+                System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
+                String genreStr = input.next().toUpperCase();
+                try {
+                    genre = Genre.valueOf(genreStr);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid genre - Please choose from the provided genres");
+                }
+            } while (genre == null);
 
-        addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");//
+            // Genre genre = input.next();
+
+            System.out.println("What year is the movie from?");
+            int yearCreated = ScanIntSafely();
+
+            System.out.println("Type true if the movie is in color or false if it is black/white.");
+            boolean isInColor = input.nextBoolean();
+
+            System.out.println("Type the duration of the movie in minutes.");
+            int lengthInMinutes = ScanIntSafely();
+
+            addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+        }
     }
 
     public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {

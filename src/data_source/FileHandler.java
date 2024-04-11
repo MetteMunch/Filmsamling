@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class FileHandler {
     // Class til at gemme alle metoder vedr. filhåndtering
     //eventuelle attributter
-    private final File file = new File("movieDatabase.csv");
+    private final File file = new File("src/data_source/movieDatabase.csv");
     private ArrayList<Movie> movieListe = loadSavedMovieList();
 
     //Constructor
@@ -55,10 +55,8 @@ public class FileHandler {
         return movies;
 
     }
-
     public void saveListOfMovies() {
-        try (PrintWriter output = new PrintWriter(new FileWriter("movieDatabase.csv"))) {
-            ;
+        try (PrintWriter output = new PrintWriter(new FileWriter("src/data_source/movieDatabase.csv"))){            ;
             for (Movie movie : movieListe) {
                 String movieString = String.format("%s;%s;%d;%b;%d;%s",
                         movie.getTitle(), movie.getDirector(), movie.getYearCreated(),
