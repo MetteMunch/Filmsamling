@@ -8,7 +8,7 @@ public enum Genre {
     DRAMA ("Drama"),
     HORROR ("Horror"),
     THRILLER ("Thriller"),
-    SCIFI ("Sci-fi"),
+    SCIFI ("Scifi"),
     CRIME ("Crime");
 
    //Attribute

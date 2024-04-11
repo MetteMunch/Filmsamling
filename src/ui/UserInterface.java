@@ -128,14 +128,12 @@ public class UserInterface {
                 }
             } while (genre == null);
 
-            System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");//
-            // Genre genre = input.next();
-
             System.out.println("What year is the movie from?");
             int yearCreated = ScanIntSafely();
 
             System.out.println("Type true if the movie is in color or false if it is black/white.");
-            boolean isInColor = input.nextBoolean();
+            String color = input.next();
+            boolean isInColor = color.equals("yes");
 
             System.out.println("Type the duration of the movie in minutes.");
             int lengthInMinutes = ScanIntSafely();
