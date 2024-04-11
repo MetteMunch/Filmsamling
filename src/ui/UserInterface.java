@@ -38,7 +38,7 @@ public class UserInterface {
 
 
             } else if (inputKey == 1) {
-                opretFilm2();
+                opretFilm();
 
 
             } else if (inputKey == 3) {
@@ -65,36 +65,6 @@ public class UserInterface {
     }
 
     public void opretFilm() {
-        System.out.println("Type the title of the movie you want to add:");
-        String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
-
-        System.out.println("Type the director of the movie:");
-        String director = input.next();
-
-        Genre genre = null;
-        do {
-            System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
-            String genreStr = input.next().toUpperCase();
-            try {
-                genre = Genre.valueOf(genreStr);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Invalid genre - Please choose from the provided genres");
-            }
-        } while (genre == null);
-
-        System.out.println("What year is the movie from?");
-        int yearCreated = ScanIntSafely();
-
-        System.out.println("Is the movie in color? Type yes or no.");
-        String color = input.next();
-        boolean isInColor = color.equals("yes");
-
-        System.out.println("Type the duration of the movie in minutes.");
-        int lengthInMinutes = ScanIntSafely();
-
-        addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
-    }
-    public void opretFilm2() {
         samling1.getInstanceMovieCollection().getSearchMatch().clear();
         boolean cond = true;
         //boolean titleFlag = false;
@@ -131,8 +101,20 @@ public class UserInterface {
             System.out.println("Type the director of the movie:");
             String director = input.next();
 
-            System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");
-            String genre = input.next();
+            Genre genre = null;
+
+            do {
+                System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
+                String genreStr = input.next().toUpperCase();
+                try {
+                    genre = Genre.valueOf(genreStr);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid genre - Please choose from the provided genres");
+                }
+            } while (genre == null);
+
+            System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");//
+            // Genre genre = input.next();
 
             System.out.println("What year is the movie from?");
             int yearCreated = ScanIntSafely();
