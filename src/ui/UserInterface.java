@@ -48,9 +48,6 @@ public class UserInterface {
 
             } else if (inputKey == 5) {
                 sortMenu();
-
-            } else if (inputKey == 8) {
-                //sortMultipleCriteria();
             }
             repeatMenu();
         }
@@ -365,6 +362,7 @@ public class UserInterface {
         System.out.println("4. by Colourised or not");
         System.out.println("5. by Duration");
         System.out.println("6. by Genre");
+        System.out.println("7. more criterias");
     }
 
     public void sortMenu() {
@@ -383,7 +381,9 @@ public class UserInterface {
             sortDuration();
         } else if (inputKey == 6) { //Genre
             sortGenre();
-        } //Ny else if med repeatMenu()?
+        } else if (inputKey == 7) { //multiply sort
+            sortMultipleCriteria();
+        }  //Ny else if med repeatMenu()?
     }
 
     public void sortTitle() {
@@ -439,6 +439,8 @@ public class UserInterface {
     public void sortMultipleCriteria() {
         System.out.println("Select the first criteria you wish to sort on.");
         displaySortMenu();
+        String searchCriteria1 = "";
+        String searchCriteria2 = "";
         int firstCriteria = ScanIntSafely();
 
         System.out.println("Select the second criteria you wish to sort on.");
@@ -449,21 +451,27 @@ public class UserInterface {
         switch (firstCriteria) {
             case 1:
                 comparator = new titleComparator();
+                searchCriteria1 = "title";
                 break;
             case 2:
                 comparator = new directorComparator();
+                searchCriteria1 = "director";
                 break;
             case 3:
                 comparator = new yearComparator();
+                searchCriteria1 = "premiere year";
                 break;
             case 4:
                 comparator = new colorComparator();
+                searchCriteria1 = "colorised";
                 break;
             case 5:
                 comparator = new durationComparator();
+                searchCriteria1 = "duration";
                 break;
             case 6:
                 comparator = new genreComparator();
+                searchCriteria1 = "genre";
                 break;
             default:
                 System.out.println("Only numbers from 1-6 are accepted.");
@@ -473,21 +481,27 @@ public class UserInterface {
         switch (secondCriteria) {
             case 1:
                 comparator = comparator.thenComparing(new titleComparator());
+                searchCriteria2 = "title";
                 break;
             case 2:
                 comparator = comparator.thenComparing(new directorComparator());
+                searchCriteria2 = "director";
                 break;
             case 3:
                 comparator = comparator.thenComparing(new yearComparator());
+                searchCriteria2 = "premiere year";
                 break;
             case 4:
                 comparator = comparator.thenComparing(new colorComparator());
+                searchCriteria2 = "colorised";
                 break;
             case 5:
                 comparator = comparator.thenComparing(new durationComparator());
+                searchCriteria2 = "duration";
                 break;
             case 6:
                 comparator = comparator.thenComparing(new genreComparator());
+                searchCriteria2 = "genre";
                 break;
             default:
                 System.out.println("Only numbers from 1-6 are accepted.");
@@ -495,8 +509,29 @@ public class UserInterface {
         }
 
         if (comparator != null) {
-            Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), comparator);
-            System.out.println("You have successfully sorted your list by " + firstCriteria + " and " + secondCriteria + ". Navigate to your list to see the changes.");
+                        Collections.sort(samling1.getInstanceMovieCollection().getMovieListe(), comparator);
+            System.out.println("You have successfully sorted your list by " + searchCriteria1 + " and " + searchCriteria2 + ":");
+            for (Movie film : samling1.getInstanceMovieCollection().getMovieListe()){
+                if(firstCriteria == 1) {
+                    System.out.println(film.toString2());
+                }
+                if(firstCriteria == 2) {
+                    System.out.println(film.toStringDirector());
+                }
+                if(firstCriteria == 3) {
+                    System.out.println(film.toStringYear());
+                }
+                if(firstCriteria == 4) {
+                    System.out.println(film.toStringIsInColor());
+                }
+                if(firstCriteria == 5) {
+                    System.out.println(film.toStringDuration());
+                }
+                if(firstCriteria == 6) {
+                    System.out.println(film.toStringGenre());
+                }
+            }
+
         }
     }
     ////-------HJÆLPEMETODE-------////
