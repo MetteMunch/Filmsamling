@@ -109,6 +109,7 @@ public class UserInterface {
             samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
         }
     }
+
     public void findAndEditMovie() {//her vises kun første match
         //user case 5, hvis der skal søges og udskrives med toString
         System.out.println("Which movie do you like to edit?");
@@ -136,7 +137,7 @@ public class UserInterface {
                         "7.Delete movie from collection\n" +
                         "8.I have changed my mind..take me back to the main menu.\n");
 
-                inputKey = input.nextInt();
+                inputKey = ScanIntSafely();
 
                 switch (inputKey) {
                     case 1 -> {
@@ -181,6 +182,7 @@ public class UserInterface {
             }
         }
     }
+
     public void movieSearchWithNewArray() {
         samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne sørger for at listen er tom ved start på søgning
         System.out.println("Which movie are you looking for?");
@@ -296,8 +298,6 @@ public class UserInterface {
     }
 
 
-
-
     ////-------SORTERING-------////
     public void displaySortMenu() {
         System.out.println("Select a criteria by which you want your movielist to be sorted.");
@@ -376,8 +376,6 @@ public class UserInterface {
             System.out.print(movie.toStringGenre() + "\n");
         }
     }
-
-
 
 
     ////-------HJÆLPEMETODE-------////
