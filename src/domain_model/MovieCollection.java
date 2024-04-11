@@ -22,8 +22,8 @@ public class MovieCollection {
     //metoder
 
     //usercase 1 - opret film
-    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        fh.getMovieListe().add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
+    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, Genre genre) {
+        fh.getMovieListe().add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes,genre));
         String result = "true";
         return result;
     }
@@ -75,7 +75,7 @@ public class MovieCollection {
         return result;
     }
 
-    public String setGenre(int indexToBeChanged, String newGenre) {
+    public String setGenre(int indexToBeChanged, Genre newGenre) {
         String result = "noChange";
         if (indexToBeChanged >= 0 && indexToBeChanged < fh.getMovieListe().size()) {
             Movie movieToBeChanged = fh.getMovieListe().get(indexToBeChanged);

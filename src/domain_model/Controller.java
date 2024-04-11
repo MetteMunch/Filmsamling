@@ -11,7 +11,7 @@ public class Controller {
     public Controller() {
     }
 
-    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public String addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, Genre genre) {
         return instanceMovieCollection.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
@@ -52,7 +52,7 @@ public class Controller {
     }
 
 
-    public String setGenre(int indexToBeChanged, String newGenre) {
+    public String setGenre(int indexToBeChanged, Genre newGenre) {
         return instanceMovieCollection.setGenre(indexToBeChanged, newGenre);
     }
 

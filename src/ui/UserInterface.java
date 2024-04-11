@@ -71,21 +71,30 @@ public class UserInterface {
         System.out.println("Type the director of the movie:");
         String director = input.next();
 
-        System.out.println("Type genre of the movie, choose between action, thriller, drama, comedy, romance, crime, horror and sci-fi:");
-        String genre = input.next();
+        Genre genre = null;
+        do {
+            System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
+            String genreStr = input.next().toUpperCase();
+            try {
+                genre = Genre.valueOf(genreStr);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid genre - Please choose from the provided genres");
+            }
+        } while (genre == null);
 
         System.out.println("What year is the movie from?");
         int yearCreated = ScanIntSafely();
 
-        System.out.println("Type true if the movie is in color or false if it is black/white.");
-        boolean isInColor = input.nextBoolean();
+        System.out.println("Is the movie in color? Type yes or no.");
+        String color = input.next();
+        boolean isInColor = color.equals("yes");
 
         System.out.println("Type the duration of the movie in minutes.");
         int lengthInMinutes = ScanIntSafely();
 
         addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
-
     }
+
 
     public void repeatMenu() {
         System.out.println("\nIf you want to add another movie, type 1.\n" +
@@ -166,7 +175,7 @@ public class UserInterface {
     }
 
 
-    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public void addMovie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, Genre genre) {
         String result = samling1.addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
         if (result.equals("true")) {
             System.out.println("You have added the movie: " + title);
@@ -309,10 +318,21 @@ public class UserInterface {
 
     public void changeGenre() {
         System.out.println("What do you want to change the genre to?");
-        String inputNewGenre = input.next();
+        System.out.println("Choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
+        String inputNewGenreStr = input.next().toUpperCase();
+
+        Genre inputNewGenre;
+        try {
+            inputNewGenre = Genre.valueOf(inputNewGenreStr);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid genre. Please choose from the provided genres.\n");
+            changeGenre(); // Kalder metoden igen hvis vi rammer en exception for at køre igen
+            return;
+        }
+
         String result = samling1.setGenre(filmIndexNo, inputNewGenre);
         if (result.equals("genreChanged")) {
-            System.out.println("You have now succesfully changed the information on the movie to: ");
+            System.out.println("You have now succesfully changed the information on the movie to: " + inputNewGenre);
             System.out.println(samling1.getInstanceMovieCollection().getMovieListe().get(filmIndexNo));
             samling1.saveListOfMoviesToFile();
         }
