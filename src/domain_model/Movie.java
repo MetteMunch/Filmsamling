@@ -48,9 +48,9 @@ public class Movie {
         String result = "";
         result += "Instructor: " + director + ", Title: " + title + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
         if (isInColor) {
-            result += ", Color movie";
+            result += ", Color: In Color";
         } else {
-            result += ", Black/White";
+            result += ", Color: Black/White";
         }
         return result;
     }   //dette result skal vises når der sorteres på instructor
@@ -59,9 +59,9 @@ public class Movie {
         String result = "";
         result += "Genre: " + genre +", Title: " + title + ", Instructor: " + director +  ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
         if (isInColor) {
-            result += ", Color movie";
+            result += ", Color: In Color";
         } else {
-            result += ", Black/White";
+            result += ", Color: Black/White";
         }
         return result;
     }   //dette result skal vises når der sorteres på genre
@@ -69,9 +69,9 @@ public class Movie {
     public String toStringIsInColor() {
         String result = "";
         if (isInColor) {
-            result += ", Color movie";
+            result += "Color: In Color";
         } else {
-            result += ", Black/White";
+            result += "Color: Black/White";
         }
         result += ", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
         return result;
@@ -81,9 +81,9 @@ public class Movie {
         String result = "";
         result += "Year: " + +yearCreated +", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Duration in min: " + lengthInMinutes;
         if (isInColor) {
-            result += ", Color movie";
+            result += ", Color: In Color";
         } else {
-            result += ", Black/White";
+            result += ", Color: Black/White";
         }
         return result;
     }   //dette result vises som udskrift, når der sorteres på year
@@ -91,9 +91,9 @@ public class Movie {
         String result = "";
         result += "Duration in min: " + lengthInMinutes + ", Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated;
         if (isInColor) {
-            result += ", Color movie";
+            result += ", Color: In Color";
         } else {
-            result += ", Black/White";
+            result += ", Color: Black/White";
         }
         return result;
     }   //dette result vises som udskrift, når der sorteres på duration
