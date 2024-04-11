@@ -213,51 +213,59 @@ public class UserInterface {
 
     public void sortMultipleCriteria() {
         System.out.println("Select the first criteria you wish to sort on.");
-        String firstCriteria = input.next();
+        displaySortMenu();
+        int firstCriteria = ScanIntSafely();
 
         System.out.println("Select the second criteria you wish to sort on.");
-        String secondCriteria = input.next();
+        displaySortMenu();
+        int secondCriteria = ScanIntSafely();
 
         Comparator<Movie> comparator = null;
-        switch (firstCriteria.toLowerCase()) {
-            case "title":
+        switch (firstCriteria) {
+            case 1:
                 comparator = new titleComparator();
                 break;
-            case "director":
+            case 2:
                 comparator = new directorComparator();
                 break;
-            case "premiere":
+            case 3:
                 comparator = new yearComparator();
                 break;
-            case "color":
+            case 4:
                 comparator = new colorComparator();
                 break;
-            case "duration":
+            case 5:
                 comparator = new durationComparator();
                 break;
-            case "genre":
+            case 6:
                 comparator = new genreComparator();
+                break;
+            default:
+                System.out.println("Only numbers from 1-6 are accepted.");
                 break;
         }
 
-        switch (secondCriteria.toLowerCase()) {
-            case "title":
+        switch (secondCriteria) {
+            case 1:
                 comparator = comparator.thenComparing(new titleComparator());
                 break;
-            case "director":
+            case 2:
                 comparator = comparator.thenComparing(new directorComparator());
                 break;
-            case "premiere":
+            case 3:
                 comparator = comparator.thenComparing(new yearComparator());
                 break;
-            case "color":
+            case 4:
                 comparator = comparator.thenComparing(new colorComparator());
                 break;
-            case "duration":
+            case 5:
                 comparator = comparator.thenComparing(new durationComparator());
                 break;
-            case "genre":
+            case 6:
                 comparator = comparator.thenComparing(new genreComparator());
+                break;
+            default:
+                System.out.println("Only numbers from 1-6 are accepted.");
                 break;
         }
 
