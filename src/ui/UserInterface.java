@@ -72,14 +72,14 @@ public class UserInterface {
     public void opretFilm() {
         samling1.getInstanceMovieCollection().getSearchMatch().clear();
         boolean cond = true;
-        //boolean titleFlag = false;
+        boolean titleFlag = true;
 
         while(cond) {
             System.out.println("Type the title of the movie you want to add:");
             String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
 
             samling1.findTitle(title);
-            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
+            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty() && titleFlag) {
                 int count = 0;
                 System.out.println("\n The following movie(s) were found: ");
                 for (Movie movie : samling1.getInstanceMovieCollection().getSearchMatch()) {
@@ -92,7 +92,7 @@ public class UserInterface {
                 samling1.getInstanceMovieCollection().getSearchMatch().clear();//Cleare listen for at holde den clean
 
                 if (choice.equals("yes")) {
-                    //titleFlag = true;
+                    titleFlag = false;
                     cond = false;
                 } else if (choice.equals("no")) {
                     System.out.println("You chose no and will now return to the menu.");
@@ -108,8 +108,9 @@ public class UserInterface {
 
             Genre genre = null;
 
+            System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
             do {
-                System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
+
                 String genreStr = input.next().toUpperCase();
                 try {
                     genre = Genre.valueOf(genreStr);
@@ -219,7 +220,7 @@ public class UserInterface {
         if (result.equals("true")) {
             System.out.println("You have added the movie: " + title);
             System.out.println("The collection now contains: " + samling1.getInstanceMovieCollection().getMovieListe().size() + " film.");
-            samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
+            //samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
         }
     }
     public void sortMultipleCriteria() {

@@ -1,33 +1,20 @@
-package data_source;
+package mock_klasser;
 
 import domain_model.Movie;
-import domain_model.Genre;
-import mock_klasser.FileHandlerInterface;
 
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class FileHandler implements FileHandlerInterface {
+
+public class FileHandlerMock implements FileHandlerInterface {
     // Class til at gemme alle metoder vedr. filhåndtering
     //eventuelle attributter
-    private final File file = new File("src/data_source/movieDatabase.csv");
-    //private ArrayList<Movie> movieListe = loadSavedMovieList();
+    ArrayList<String> film = new ArrayList<>();
+            //= loadSavedMovieList();
 
-    //Constructor
-    public FileHandler() {
-        loadSavedMovieList();
-    }
 
     public ArrayList<Movie> loadSavedMovieList() {
         ArrayList<Movie> movies = new ArrayList<>();
-        Scanner scannerInput = null;
-        try {
-            scannerInput = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.println("Sorry something went wrong with loading the MovieCollection.");
-            throw new RuntimeException(e);
-        }
+        /*
 
         while (scannerInput.hasNext()) {
             String line = scannerInput.nextLine();
@@ -54,23 +41,28 @@ public class FileHandler implements FileHandlerInterface {
         }
         scannerInput.close();
         return movies;
-
+*/
+        return null;
     }
+
+
     public void saveListOfMovies(ArrayList<Movie> movieListe) {
-        try (PrintWriter output = new PrintWriter(new FileWriter("src/data_source/movieDatabase.csv"))){            ;
+
             for (Movie movie : movieListe) {
                 String movieString = String.format("%s;%s;%d;%b;%d;%s",
                         movie.getTitle(), movie.getDirector(), movie.getYearCreated(),
                         movie.getIsInColor(), movie.getLengthInMinutes(), movie.getGenre());
-                output.println(movieString);
+                film.add(movieString);
             }
-            System.out.println("MovieList is saved successfully.");
-        } catch (IOException e) {
-            System.out.println("Error saving movies: " + e.getMessage());
-            e.printStackTrace();
         }
-    }
 
+
+    public ArrayList<String> getFilm() {
+        return film;
+    }
+    public void setFilm(ArrayList<String> film) {
+        this.film = film;
+    }
 
 
 
@@ -92,3 +84,4 @@ public class FileHandler implements FileHandlerInterface {
 
 
 }
+
