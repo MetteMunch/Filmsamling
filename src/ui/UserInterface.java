@@ -362,7 +362,7 @@ public class UserInterface {
         System.out.println("4. by Colourised or not");
         System.out.println("5. by Duration");
         System.out.println("6. by Genre");
-        System.out.println("7. more criterias");
+        System.out.println("7. by Multiple Criteria");
     }
 
     public void sortMenu() {
@@ -381,7 +381,7 @@ public class UserInterface {
             sortDuration();
         } else if (inputKey == 6) { //Genre
             sortGenre();
-        } else if (inputKey == 7) { //multiply sort
+        } else if (inputKey == 7) { //Multiply sort
             sortMultipleCriteria();
         }  //Ny else if med repeatMenu()?
     }
