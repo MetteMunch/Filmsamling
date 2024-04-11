@@ -474,7 +474,7 @@ public class UserInterface {
                 searchCriteria1 = "genre";
                 break;
             default:
-                System.out.println("Only numbers from 1-6 are accepted.");
+                System.out.println("Only digits from 1-6 are accepted.");
                 break;
         }
 
@@ -504,7 +504,7 @@ public class UserInterface {
                 searchCriteria2 = "genre";
                 break;
             default:
-                System.out.println("Only numbers from 1-6 are accepted.");
+                System.out.println("Only digits from 1-6 are accepted.");
                 break;
         }
 
