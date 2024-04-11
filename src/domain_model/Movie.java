@@ -2,17 +2,16 @@ package domain_model;
 
 public class Movie {
 
+    //attributes på movie
     private String title;
     private String director;
     private int yearCreated;
     private boolean isInColor;
     private int lengthInMinutes;
-    private String genre;
-
-    //attributes på movie
+    private Genre genre;
 
     //constructor med setter af attributes
-    public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+    public Movie(String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, Genre genre) {
         this.title = title;
         this.director = director;
         this.yearCreated = yearCreated;
@@ -22,25 +21,26 @@ public class Movie {
     }
 
 
-    @Override //en slags stavekontrol  kaldes ved at kalde metoden Movies.toString()
+    @Override //en slags stavekontrol - kaldes ved at kalde metoden Movies.toString()
     public String toString() {
         String result = "";
         result += "Title: " + title + "\nInstructor: " + director + "\nGenre: " + genre + "\nYear: " + yearCreated + "\nDuration in min: " + lengthInMinutes;
-        if (isInColor) {
-            result += "\nColor movie\n";
+        if (isInColor == true) {
+            result += "\nColor: In color\n";
         } else {
-            result += "\nBlack/White\n";
+            result += "\nColor: Black and White\n";
         }
         return result;
     }   //dette result vises som udskrift, når search metode kaldes
+
 
     public String toString2() {
         String result = "";
         result += "Title: " + title + ", Instructor: " + director + ", Genre: " + genre + ", Year: " + yearCreated + ", Duration in min: " + lengthInMinutes;
         if (isInColor) {
-            result += ", Color movie";
+            result += ", Color: In Color";
         } else {
-            result += ", Black/White";
+            result += ", Color: Black/White";
         }
         return result;
     }   //dette result vises som udskrift, når samlet liste skal vises (en film på hver linje)
@@ -106,7 +106,7 @@ public class Movie {
         this.director = newDirector;
     }
 
-    public void setGenre(String newGenre) {
+    public void setGenre(Genre newGenre) {
         this.genre = newGenre;
     }
 
@@ -142,7 +142,7 @@ public class Movie {
         return lengthInMinutes;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 }

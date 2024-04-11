@@ -1,6 +1,7 @@
 package data_source;
 
 import domain_model.Movie;
+import domain_model.Genre;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -27,27 +28,37 @@ public class FileHandler {
             throw new RuntimeException(e);
         }
 
-        Movie posterFraListen = null;
-
         while (scannerInput.hasNext()) {
             String line = scannerInput.nextLine();
             String[] values = line.split(";");
-            posterFraListen = new Movie(
-                    (values[0]),//String title
-                    (values[1]),//String director
-                    (Integer.parseInt(values[2])),//int yearCreated
-                    (Boolean.parseBoolean(values[3])),//Boolean IsInColor
-                    (Integer.parseInt(values[4])),//int length
-                    (values[5])//String genre
-            );
-            movies.add(posterFraListen);
+            String title = values[0]; //String title
+            String director = values[1]; //String director
+            int yearCreated = Integer.parseInt(values[2]); //int yearCreated
+            boolean isInColor = Boolean.parseBoolean(values[3]); //Boolean IsInColor
+            int length = Integer.parseInt(values[4]); //int length
+
+            Genre genre = null;
+            try {
+                genre = Genre.valueOf(values[5].toUpperCase());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid genre: " + values[5]);
+            } // Handle the error appropriately, such as skipping this entry or asking for correct input
+            //continue;
+
+            Movie movie = new Movie(title, director, yearCreated, isInColor, length, genre);
+            // Laver en ny movie baseret på scannerinput fra fil
+
+            movies.add(movie);
+            // Tilføjer filmene til vores filmsamling
         }
         scannerInput.close();
         return movies;
 
     }
+
     public void saveListOfMovies() {
-        try (PrintWriter output = new PrintWriter(new FileWriter("movieDatabase.csv"))){            ;
+        try (PrintWriter output = new PrintWriter(new FileWriter("movieDatabase.csv"))) {
+            ;
             for (Movie movie : movieListe) {
                 String movieString = String.format("%s;%s;%d;%b;%d;%s",
                         movie.getTitle(), movie.getDirector(), movie.getYearCreated(),
@@ -60,6 +71,7 @@ public class FileHandler {
             e.printStackTrace();
         }
     }
+
     public ArrayList<Movie> getMovieListe() {
         return movieListe;
     }
