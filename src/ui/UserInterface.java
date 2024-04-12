@@ -80,66 +80,52 @@ public class UserInterface {
     /////-------ADD, EDIT, SEARCH-------////
 
     public void opretFilm() {
-        samling1.getInstanceMovieCollection().getSearchMatch().clear();
-        boolean cond = true;
-        boolean titleFlag = true;
+        samling1.getInstanceMovieCollection().getSearchMatch().clear();//denne starter med at slette hvis der er poster i vores search array
+        boolean condition = true;
 
-        while (cond) {
+        while (condition) {
             System.out.println("Type the title of the movie you want to add:");
             String title = input.next();// Her benyttes kun next selvom det kan være input med flere ord...men dette er fixet med useDelimeter
-
-            samling1.findTitle(title);
-            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty() && titleFlag) {
+            samling1.findTitle(title); //her laver vi en søgning på titlen som vi vil oprette...for at tjekke om den allerede er der!
+            if (!samling1.getInstanceMovieCollection().getSearchMatch().isEmpty()) {
                 int count = 0;
-                System.out.println("\n The following movie(s) were found: ");
+                //System.out.println("\n The following movie(s) were found: ");
                 for (Movie movie : samling1.getInstanceMovieCollection().getSearchMatch()) {
-                    System.out.println(count + ". " + movie);
+                    System.out.println("You entered a movie title which already appear in the collection with: " + count + ". " + movie.toString2());
                     count++;
                 }
-                System.out.println("You entered a title that returned " + count + " results. Would you like to continue adding your movie? Type yes/no.");
-
+                System.out.println("Would you like to continue adding your movie? Type yes/no.");
                 String choice = input.next().toLowerCase();
                 samling1.getInstanceMovieCollection().getSearchMatch().clear();//Cleare listen for at holde den clean
-
-                if (choice.equals("yes")) {
-                    titleFlag = false;
-                    cond = false;
-                } else if (choice.equals("no")) {
+                if (choice.equals("no")) {
                     System.out.println("You chose no and will now return to the menu.");
                     break;
+                } else if (choice.equals("yes")) {
                 } else {
                     System.out.println("Please input only yes or no in order to continue.");
                 }
-
             }
-
-            System.out.println("Type the director of the movie:");
+            System.out.println("Type the director of the movie:"); //her kører vi videre med oprettelse af movie
             String director = input.next();
-
             Genre genre = null;
-
             System.out.println("Type genre of the movie - choose between Action, Thriller, Drama, Comedy, Romance, Crime, Horror and Scifi:");
             do {
-
                 String genreStr = input.next().toUpperCase();
                 try {
                     genre = Genre.valueOf(genreStr);
                 } catch (IllegalArgumentException e) {
                     System.out.println("Invalid genre - Please choose from the provided genres");
                 }
-            } while (genre == null);
-
+            } while (genre == null); //vi benytte do while da bruger skal have mulighed for at skrive korrekt genre, indtil dette faktisk er gjort
             System.out.println("What year is the movie from?");
             int yearCreated = ScanIntSafely();
-
             System.out.println("Type true if the movie is in color or false if it is black/white.");
             String color = input.next();
             boolean isInColor = color.equals("yes");
-
             System.out.println("Type the duration of the movie in minutes.");
             int lengthInMinutes = ScanIntSafely();
-
             addMovie(title, director, yearCreated, isInColor, lengthInMinutes, genre);
+            condition = false;
         }
     }
 
