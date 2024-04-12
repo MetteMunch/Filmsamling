@@ -134,7 +134,7 @@ public class UserInterface {
         if (result.equals("true")) {
             System.out.println("You have added the movie: " + title);
             System.out.println("The collection now contains: " + samling1.getInstanceMovieCollection().getMovieListe().size() + " film.");
-            samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
+            //samling1.getInstanceMovieCollection().getFh().saveListOfMovies();
         }
     }
 

@@ -1,11 +1,14 @@
 package domain_model;
 
+import data_source.FileHandler;
+
 import java.util.ArrayList;
 
 public class Controller {
 
     //oprettelse af instance af domain_model.MovieCollection
-    private MovieCollection instanceMovieCollection = new MovieCollection();
+    private MovieCollection instanceMovieCollection = new MovieCollection(new FileHandler());
+    FileHandler fh = new FileHandler();
 
     //constructor
     public Controller() {
@@ -64,6 +67,11 @@ public class Controller {
         return instanceMovieCollection.setIsInColor(indexToBeChanged, isInColor);
     }
     public void saveListOfMoviesToFile() {
+        /*
         instanceMovieCollection.getFh().saveListOfMovies();
+        fh.saveListOfMovies(instanceMovieCollection);
+         */
+
+
     }
 }
